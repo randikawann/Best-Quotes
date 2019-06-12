@@ -1,14 +1,13 @@
-package com.xiteb.mortivationalquotes;
+package com.xiteb.mortivationalquotes.adapter;
 
 import android.app.Activity;
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.xiteb.mortivationalquotes.R;
 
 public class PopupAdapter extends ArrayAdapter<String> {
 

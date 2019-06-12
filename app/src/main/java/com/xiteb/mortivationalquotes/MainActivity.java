@@ -6,7 +6,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.CountDownTimer;
@@ -17,7 +16,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,10 +24,10 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -39,11 +37,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ahmedadeltito.photoeditorsdk.BrushDrawingView;
 import com.ahmedadeltito.photoeditorsdk.OnPhotoEditorSDKListener;
 import com.ahmedadeltito.photoeditorsdk.PhotoEditorSDK;
 import com.ahmedadeltito.photoeditorsdk.ViewType;
-import com.viewpagerindicator.PageIndicator;
+import com.xiteb.mortivationalquotes.adapter.ColorPickerAdapter;
+import com.xiteb.mortivationalquotes.adapter.ImageGaleryAdapter;
+import com.xiteb.mortivationalquotes.adapter.PopupAdapter;
 import com.xiteb.mortivationalquotes.widget.SlidingUpPanelLayout;
 
 import java.text.SimpleDateFormat;
@@ -64,10 +63,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private View bottomShadow;
     private RelativeLayout bottomShadowRelativeLayout;
     private ArrayList<Integer> colorPickerColors;
+    private ArrayList<Integer> galerypicker;
     private int colorCodeTextView = -1;
     private PhotoEditorSDK photoEditorSDK;
     ImageView photoEditImageView;
     private static final int PERMISSION_REQUEST_CODE = 1;
+
+
+    private RecyclerView backgroundrecyclerview;
+
+    String maintextvalue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Typeface newFont = Typeface.createFromAsset(getAssets(), "Eventtus-Icons.ttf");
 
+        backgroundrecyclerview = findViewById(R.id.backgroundrecyclerview);
         drawingViewColorPickerRecyclerView = (RecyclerView) findViewById(R.id.drawing_view_color_picker_recycler_view);
         parentImageRelativeLayout = (RelativeLayout) findViewById(R.id.parent_image_rl);
 //        TextView closeTextView = (TextView) findViewById(R.id.close_tv);
@@ -118,6 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         photoEditorSDK.setOnPhotoEditorSDKListener(this);
 
         addText("Enter your text here", getResources().getColor(R.color.black));
+        maintextvalue = "Enter your text here";
 
 
 
@@ -133,6 +140,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        clearAllTextView.setOnClickListener(this);
 //        clearAllTextTextView.setOnClickListener(this);
 //        goToNextTextView.setOnClickListener(this);
+
+        galerypicker = new ArrayList<>();
+        galerypicker.add(R.drawable.a1);
+        galerypicker.add(R.drawable.a2);
+        galerypicker.add(R.drawable.a3);
+        galerypicker.add(R.drawable.a4);
+        galerypicker.add(R.drawable.a5);
+        galerypicker.add(R.drawable.a6);
+
+//        galerypicker = new int[]{R.drawable.above_shadow, R.drawable.below_shadow, R.drawable.below_shadow};
+// later...
+//        myImageView.setImageResource(myImageList[i]);
+
+
+
+
 
         colorPickerColors = new ArrayList<>();
         colorPickerColors.add(getResources().getColor(R.color.black));
@@ -157,9 +180,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_quotes:
-                        addgaleryvalue();
+//                        addgaleryvalue();
+                        openAddTextPopupWindow(maintextvalue, -1);
                         break;
                     case R.id.action_background:
+                        galleyimageselect();
                         updateBrushDrawingView(true);
                         break;
                 }
@@ -185,6 +210,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void addText(String text, int colorCodeTextView) {
+        photoEditorSDK.clearAllViews();
         photoEditorSDK.addText(text, colorCodeTextView);
     }
 
@@ -206,6 +232,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         View addTextPopupWindowRootView = inflater.inflate(R.layout.add_text_popup_window, null);
         final EditText addTextEditText = (EditText) addTextPopupWindowRootView.findViewById(R.id.add_text_edit_text);
         TextView addTextDoneTextView = (TextView) addTextPopupWindowRootView.findViewById(R.id.add_text_done_tv);
+        TextView add_text_galery = addTextPopupWindowRootView.findViewById(R.id.add_text_galery);
         RecyclerView addTextColorPickerRecyclerView = (RecyclerView) addTextPopupWindowRootView.findViewById(R.id.add_text_color_picker_recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         addTextColorPickerRecyclerView.setLayoutManager(layoutManager);
@@ -232,6 +259,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         pop.showAtLocation(addTextPopupWindowRootView, Gravity.TOP, 0, 0);
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+        add_text_galery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pop.dismiss();
+                addgaleryvalue();
+            }
+        });
         addTextDoneTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -250,6 +284,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        bottomShadowRelativeLayout.setVisibility(visibility);
     }
 
+    private void galleyimageselect(){
+        updateView(View.GONE);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, true);
+        backgroundrecyclerview.setLayoutManager(layoutManager);
+        backgroundrecyclerview.setHasFixedSize(true);
+        ImageGaleryAdapter imageGaleryAdapter = new ImageGaleryAdapter(MainActivity.this, galerypicker);
+
+
+
+        backgroundrecyclerview.setAdapter(imageGaleryAdapter);
+//        backgroundrecyclerview
+
+
+
+    }
+
     private void updateBrushDrawingView(boolean brushDrawingMode) {
 
 //        photoEditorSDK.setBrushDrawingMode(brushDrawingMode);
@@ -258,7 +308,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             drawingViewColorPickerRecyclerView.setVisibility(View.VISIBLE);
             doneDrawingTextView.setVisibility(View.VISIBLE);
             eraseDrawingTextView.setVisibility(View.VISIBLE);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, true);
             drawingViewColorPickerRecyclerView.setLayoutManager(layoutManager);
             drawingViewColorPickerRecyclerView.setHasFixedSize(true);
             ColorPickerAdapter colorPickerAdapter = new ColorPickerAdapter(MainActivity.this, colorPickerColors);
@@ -400,6 +450,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.i("1234", quotesname[position]);
                 dialog.dismiss();
+                maintextvalue = quotesname[position];
                 openAddTextPopupWindow(quotesname[position], -1);
             }
         });
@@ -425,6 +476,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onEditTextChangeListener(String text, int colorCode) {
         openAddTextPopupWindow(text, colorCode);
+        maintextvalue = text;
     }
 
     @Override

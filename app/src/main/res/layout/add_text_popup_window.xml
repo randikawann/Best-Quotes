@@ -19,6 +19,21 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="15sp" />
+    <TextView
+        android:id="@+id/add_text_galery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="100dp"
+        android:background="@drawable/rounded_border_text_view"
+        android:padding="10dp"
+        android:text="Gallery"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/add_text_edit_text"
