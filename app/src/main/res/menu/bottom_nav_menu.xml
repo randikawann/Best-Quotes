@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_quotes"
+        android:enabled="true"
+        android:icon="@drawable/down24white"
+        android:title="Quotes"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_background"
+        android:enabled="true"
+        android:icon="@drawable/down24white"
+        android:title="Background"
+        app:showAsAction="ifRoom" />
+
+
+</menu>

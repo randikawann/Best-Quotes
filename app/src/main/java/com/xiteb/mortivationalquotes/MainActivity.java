@@ -10,6 +10,8 @@ import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.CountDownTimer;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -23,6 +25,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -64,7 +67,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int colorCodeTextView = -1;
     private PhotoEditorSDK photoEditorSDK;
     ImageView photoEditImageView;
-
     private static final int PERMISSION_REQUEST_CODE = 1;
 
     @Override
@@ -76,34 +78,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         drawingViewColorPickerRecyclerView = (RecyclerView) findViewById(R.id.drawing_view_color_picker_recycler_view);
         parentImageRelativeLayout = (RelativeLayout) findViewById(R.id.parent_image_rl);
-        TextView closeTextView = (TextView) findViewById(R.id.close_tv);
-        TextView addTextView = (TextView) findViewById(R.id.add_text_tv);
-        TextView addPencil = (TextView) findViewById(R.id.add_pencil_tv);
+//        TextView closeTextView = (TextView) findViewById(R.id.close_tv);
+//        TextView addTextView = (TextView) findViewById(R.id.add_text_tv);
+//        TextView addPencil = (TextView) findViewById(R.id.add_pencil_tv);
         RelativeLayout deleteRelativeLayout = (RelativeLayout) findViewById(R.id.delete_rl);
         TextView deleteTextView = (TextView) findViewById(R.id.delete_tv);
-        TextView saveTextView = (TextView) findViewById(R.id.save_tv);
-        TextView saveTextTextView = (TextView) findViewById(R.id.save_text_tv);
-        undoTextView = (TextView) findViewById(R.id.undo_tv);
-        undoTextTextView = (TextView) findViewById(R.id.undo_text_tv);
+//        TextView saveTextView = (TextView) findViewById(R.id.save_tv);
+//        TextView saveTextTextView = (TextView) findViewById(R.id.save_text_tv);
+//        undoTextView = (TextView) findViewById(R.id.undo_tv);
+//        undoTextTextView = (TextView) findViewById(R.id.undo_text_tv);
         doneDrawingTextView = (TextView) findViewById(R.id.done_drawing_tv);
         eraseDrawingTextView = (TextView) findViewById(R.id.erase_drawing_tv);
-        TextView clearAllTextView = (TextView) findViewById(R.id.clear_all_tv);
-        TextView clearAllTextTextView = (TextView) findViewById(R.id.clear_all_text_tv);
-        TextView goToNextTextView = (TextView) findViewById(R.id.go_to_next_screen_tv);
+//        TextView clearAllTextView = (TextView) findViewById(R.id.clear_all_tv);
+//        TextView clearAllTextTextView = (TextView) findViewById(R.id.clear_all_text_tv);
+//        TextView goToNextTextView = (TextView) findViewById(R.id.go_to_next_screen_tv);
         photoEditImageView = (ImageView) findViewById(R.id.photo_edit_iv);
         mLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
-        topShadow = findViewById(R.id.top_shadow);
-        topShadowRelativeLayout = (RelativeLayout) findViewById(R.id.top_parent_rl);
-        bottomShadow = findViewById(R.id.bottom_shadow);
-        bottomShadowRelativeLayout = (RelativeLayout) findViewById(R.id.bottom_parent_rl);
+//        topShadow = findViewById(R.id.top_shadow);
+//        topShadowRelativeLayout = (RelativeLayout) findViewById(R.id.top_parent_rl);
+//        bottomShadow = findViewById(R.id.bottom_shadow);
+//        bottomShadowRelativeLayout = (RelativeLayout) findViewById(R.id.bottom_parent_rl);
 
-        closeTextView.setTypeface(newFont);
-        addTextView.setTypeface(newFont);
-        addPencil.setTypeface(newFont);
-        saveTextView.setTypeface(newFont);
-        undoTextView.setTypeface(newFont);
-        clearAllTextView.setTypeface(newFont);
-        goToNextTextView.setTypeface(newFont);
+//        closeTextView.setTypeface(newFont);
+//        addTextView.setTypeface(newFont);
+//        addPencil.setTypeface(newFont);
+//        saveTextView.setTypeface(newFont);
+//        undoTextView.setTypeface(newFont);
+//        clearAllTextView.setTypeface(newFont);
+//        goToNextTextView.setTypeface(newFont);
         deleteTextView.setTypeface(newFont);
 
         final List<Fragment> fragmentsList = new ArrayList<>();
@@ -115,20 +117,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .buildPhotoEditorSDK(); // build photo editor sdk
         photoEditorSDK.setOnPhotoEditorSDKListener(this);
 
+        addText("Enter your text here", getResources().getColor(R.color.black));
 
 
-        closeTextView.setOnClickListener(this);
-        addTextView.setOnClickListener(this);
-        addPencil.setOnClickListener(this);
-        saveTextView.setOnClickListener(this);
-        saveTextTextView.setOnClickListener(this);
-        undoTextView.setOnClickListener(this);
-        undoTextTextView.setOnClickListener(this);
+
+//        closeTextView.setOnClickListener(this);
+//        addTextView.setOnClickListener(this);
+//        addPencil.setOnClickListener(this);
+//        saveTextView.setOnClickListener(this);
+//        saveTextTextView.setOnClickListener(this);
+//        undoTextView.setOnClickListener(this);
+//        undoTextTextView.setOnClickListener(this);
         doneDrawingTextView.setOnClickListener(this);
         eraseDrawingTextView.setOnClickListener(this);
-        clearAllTextView.setOnClickListener(this);
-        clearAllTextTextView.setOnClickListener(this);
-        goToNextTextView.setOnClickListener(this);
+//        clearAllTextView.setOnClickListener(this);
+//        clearAllTextTextView.setOnClickListener(this);
+//        goToNextTextView.setOnClickListener(this);
 
         colorPickerColors = new ArrayList<>();
         colorPickerColors.add(getResources().getColor(R.color.black));
@@ -146,8 +150,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+        //Bottom navigation
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_quotes:
+                        addgaleryvalue();
+                        break;
+                    case R.id.action_background:
+                        updateBrushDrawingView(true);
+                        break;
+                }
+                return true;
+            }
+        });
 
 
+
+    }
+
+    private void textfontcolorchange() {
     }
 
     private boolean stringIsNotEmpty(String string) {
@@ -220,15 +244,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void updateView(int visibility) {
-        topShadow.setVisibility(visibility);
-        topShadowRelativeLayout.setVisibility(visibility);
-        bottomShadow.setVisibility(visibility);
-        bottomShadowRelativeLayout.setVisibility(visibility);
+//        topShadow.setVisibility(visibility);
+//        topShadowRelativeLayout.setVisibility(visibility);
+//        bottomShadow.setVisibility(visibility);
+//        bottomShadowRelativeLayout.setVisibility(visibility);
     }
 
     private void updateBrushDrawingView(boolean brushDrawingMode) {
 
-        photoEditorSDK.setBrushDrawingMode(brushDrawingMode);
+//        photoEditorSDK.setBrushDrawingMode(brushDrawingMode);
         if (brushDrawingMode) {
             updateView(View.GONE);
             drawingViewColorPickerRecyclerView.setVisibility(View.VISIBLE);
@@ -329,29 +353,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.close_tv) {
-            onBackPressed();
-        }else if (v.getId() == R.id.add_text_tv) {
-            //for text layout
-//            mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
-            //text edit window
-            addgaleryvalue();
-
-        } else if (v.getId() == R.id.add_pencil_tv) {
-            updateBrushDrawingView(true);
-        } else if (v.getId() == R.id.done_drawing_tv) {
+//        if (v.getId() == R.id.close_tv) {
+//            onBackPressed();
+//        }else if (v.getId() == R.id.add_text_tv) {
+//            //for text layout
+////            mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+//            //text edit window
+//            addgaleryvalue();
+//
+//        } else if (v.getId() == R.id.add_pencil_tv) {
+//            updateBrushDrawingView(true);
+//        }
+        if (v.getId() == R.id.done_drawing_tv) {
             updateBrushDrawingView(false);
-        } else if (v.getId() == R.id.save_tv || v.getId() == R.id.save_text_tv) {
-            returnBackWithSavedImage();
-        } else if (v.getId() == R.id.clear_all_tv || v.getId() == R.id.clear_all_text_tv) {
-            clearAllViews();
-        } else if (v.getId() == R.id.undo_text_tv || v.getId() == R.id.undo_tv) {
-            undoViews();
-        } else if (v.getId() == R.id.erase_drawing_tv) {
-            eraseDrawing();
-        } else if (v.getId() == R.id.go_to_next_screen_tv) {
-            returnBackWithSavedImage();
         }
+//        else if (v.getId() == R.id.save_tv || v.getId() == R.id.save_text_tv) {
+//            returnBackWithSavedImage();
+//        } else if (v.getId() == R.id.clear_all_tv || v.getId() == R.id.clear_all_text_tv) {
+//            clearAllViews();
+//        } else if (v.getId() == R.id.undo_text_tv || v.getId() == R.id.undo_tv) {
+//            undoViews();
+//        }
+        else if (v.getId() == R.id.erase_drawing_tv) {
+            eraseDrawing();
+        }
+//        else if (v.getId() == R.id.go_to_next_screen_tv) {
+//            returnBackWithSavedImage();
+//        }
     }
 
     private void addgaleryvalue() {
@@ -365,14 +393,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ListView popuplistview = dialog.findViewById(R.id.popup_listVIew);
         PopupAdapter adapter = new PopupAdapter(this, quotesname);
         popuplistview.setAdapter(adapter);
-
-//        ListView popuplistview = dialog.findViewById(R.id.popup_listVIew);
-////        ListView popuplistview = new ListView(MainActivity.this);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,quotesname);
-//        popuplistview.setAdapter(adapter);
-//
-
-
         dialog.show();
 
         popuplistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -410,8 +430,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onAddViewListener(ViewType viewType, int numberOfAddedViews) {
         if (numberOfAddedViews > 0) {
-            undoTextView.setVisibility(View.VISIBLE);
-            undoTextTextView.setVisibility(View.VISIBLE);
+//            undoTextView.setVisibility(View.VISIBLE);
+//            undoTextTextView.setVisibility(View.VISIBLE);
         }
         switch (viewType) {
             case BRUSH_DRAWING:
