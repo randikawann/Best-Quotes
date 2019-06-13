@@ -7,8 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Build;
 import android.os.CountDownTimer;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -23,6 +25,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -45,6 +48,7 @@ import com.xiteb.mortivationalquotes.adapter.ImageGaleryAdapter;
 import com.xiteb.mortivationalquotes.adapter.PopupAdapter;
 import com.xiteb.mortivationalquotes.widget.SlidingUpPanelLayout;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -284,7 +288,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        bottomShadowRelativeLayout.setVisibility(visibility);
     }
 
+    //Action bar option
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.createtopmenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_save) {
+            Log.i("1234", "Save button clicked");
+            returnBackWithSavedImage();
+            return true;
+        }
+        else if (id == R.id.action_share) {
+            Log.i("1234", "send button clicked");
+            returnBackWithShareImage();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void galleyimageselect(){
+//        photoEditImageView.setImageResource(R.drawable.a3);
+//        Log.i("1234", "1st resource : "+photoEditImageView.getResources().toString());
         updateView(View.GONE);
         LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, true);
         backgroundrecyclerview.setLayoutManager(layoutManager);
@@ -348,40 +377,101 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             public void onFinish() {
                 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-                String imageName = "IMG_" + timeStamp + ".jpg";
+                String imageName = "IMG_" + timeStamp + ".png";
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("imagePath", photoEditorSDK.saveImage("PhotoEditorSDK", imageName));
                 setResult(Activity.RESULT_OK, returnIntent);
-                finish();
+//                finish();
+
+
+
             }
         }.start();
     }
+
+    private void savenshareimage(){
+        updateView(View.GONE);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+        parentImageRelativeLayout.setLayoutParams(layoutParams);
+        new CountDownTimer(1000, 500) {
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            public void onFinish() {
+                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+                String imageName = "IMG_" + timeStamp + ".png";
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("imagePath", photoEditorSDK.saveImage("PhotoEditorSDK", imageName));
+                setResult(Activity.RESULT_OK, returnIntent);
+//                finish();
+
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+
+                String imagePath = Environment.getExternalStorageDirectory() + File.separator +"Pictures"+File.separator+ "PhotoEditorSDK"+File.separator+ imageName;
+                Log.i("1234", "Image path : "+ imagePath);
+                File imageFileToShare = new File(imagePath);
+
+                Uri phototUri;
+
+                if (Build.VERSION.SDK_INT < 24) {
+                    phototUri = Uri.fromFile(imageFileToShare);
+                } else {
+                    phototUri = Uri.parse(imageFileToShare.getPath()); // My work-around for new SDKs, causes ActivityNotFoundException in API 10.
+                }
+
+                shareIntent.setType("image/*");
+                shareIntent.putExtra(Intent.EXTRA_STREAM, phototUri);
+                shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                startActivity(Intent.createChooser(shareIntent, "Share Via"));
+
+
+
+            }
+        }.start();
+    }
+
+    private void returnBackWithShareImage() {
+
+        if (Build.VERSION.SDK_INT >= 23)
+        {
+            if (checkPermission()) {
+                savenshareimage();
+            } else {
+                requestPermission();
+            }
+        }
+        else
+        {
+            requestPermission();
+        }
+    }
+
 
     private void returnBackWithSavedImage() {
 
         if (Build.VERSION.SDK_INT >= 23)
         {
             if (checkPermission()) {
-                // Code for above or equal 23 API Oriented Device
-                // Your Permission granted already .Do next code
+               saveImage2();
 
-                saveImage2();
-//                        opendialogbox();
-//                               actionSaveitemclicked();
+//                Toast.makeText(MainActivity.this, "Save image to picture", Toast.LENGTH_LONG).show();
+//                Intent mainintent = new Intent(MainActivity.this, MainActivity.class);
+//                startActivity(mainintent);
 
             } else {
-                requestPermission(); // Code for permission
+                requestPermission();
             }
         }
         else
         {
-            // Code for Below 23 API Oriented Device
-            // Do next code
             requestPermission();
         }
-
-
     }
+
+
     private boolean checkPermission() {
         int result = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (result == PackageManager.PERMISSION_GRANTED) {
