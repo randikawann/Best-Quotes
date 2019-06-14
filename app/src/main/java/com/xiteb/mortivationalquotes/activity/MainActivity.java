@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         photoEditImageView = (ImageView) findViewById(R.id.photo_edit_iv);
         mLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
 
+
         deleteTextView.setTypeface(newFont);
 
         final List<Fragment> fragmentsList = new ArrayList<>();
@@ -164,10 +165,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_quotes:
+                        backgroundrecyclerview.setVisibility(View.INVISIBLE);
 //                        addgaleryvalue();
                         openAddTextPopupWindow(maintextvalue, -1);
                         break;
                     case R.id.action_background:
+                        backgroundrecyclerview.setVisibility(View.VISIBLE);
                         galleyimageselect();
                         updateBrushDrawingView(true);
                         break;
@@ -619,11 +622,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void myClickListener(int imagePath) {
+        drawingViewColorPickerRecyclerView.setVisibility(View.INVISIBLE);
         photoEditImageView.setImageResource(imagePath);
     }
 
     @Override
     public void colorchange() {
+        drawingViewColorPickerRecyclerView.setVisibility(View.VISIBLE);
         photoEditImageView.setImageResource(0);
         photoEditImageView.setBackgroundColor(colorPickerColors.get(1));
 

@@ -82,12 +82,14 @@
 
 
                 <android.support.v7.widget.RecyclerView
+                    android:visibility="invisible"
                     android:id="@+id/drawing_view_color_picker_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
                     />
                 <android.support.v7.widget.RecyclerView
+                    android:visibility="invisible"
                     android:id="@+id/backgroundrecyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
