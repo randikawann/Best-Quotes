@@ -1,4 +1,4 @@
-package com.xiteb.mortivationalquotes;
+package com.xiteb.mortivationalquotes.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.xiteb.mortivationalquotes.R;
 import com.xiteb.mortivationalquotes.adapter.QuotesAdapter;
 import com.xiteb.mortivationalquotes.controller.Common;
 import com.xiteb.mortivationalquotes.model.Quote;

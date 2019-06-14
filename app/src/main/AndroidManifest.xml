@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OtherViewActivity" android:theme="@style/createquotestheme" android:parentActivityName=".activity.MenuActivity"></activity>
+        <activity android:name=".activity.OtherViewActivity" android:theme="@style/createquotestheme" android:parentActivityName=".activity.MenuActivity"></activity>
         <activity
             android:name=".activity.ImageVIewActivity"
             android:parentActivityName=".activity.MenuActivity" />

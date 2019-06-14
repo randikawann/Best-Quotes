@@ -9,14 +9,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.xiteb.mortivationalquotes.R;
+import com.xiteb.mortivationalquotes.RecyclerImageClick;
 
 import java.util.List;
+import java.util.zip.Inflater;
 
 public class ImageGaleryAdapter extends RecyclerView.Adapter<ImageGaleryAdapter.ViewHolder>  {
 
-    private Context context;
+    RecyclerImageClick listener;
+//    private Context context;
     private LayoutInflater inflater;
     private List<Integer> galerypicker;
     private ColorPickerAdapter.OnColorPickerClickListener onColorPickerClickListener;
@@ -24,66 +29,41 @@ public class ImageGaleryAdapter extends RecyclerView.Adapter<ImageGaleryAdapter.
     View view2;
 
 
-    public ImageGaleryAdapter(@NonNull Context context, @NonNull List<Integer> galerypicker) {
-        this.context = context;
-        this.inflater = LayoutInflater.from(context);
+    public ImageGaleryAdapter(@NonNull RecyclerImageClick listener, @NonNull List<Integer> galerypicker) {
+        this.listener=listener;
         this.galerypicker = galerypicker;
     }
+
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        View view = inflater.inflate(R.layout.galleryscrollitem, viewGroup, false);
-
-        view2 = inflater.inflate(R.layout.activity_main, viewGroup, false);
-
-        return new ImageGaleryAdapter.ViewHolder(view);
-
+        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
+        View rootView = inflater.inflate(R.layout.galleryscrollitem, viewGroup, false);
+        return new ViewHolder(rootView);
 
     }
+
+
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
         viewHolder.imggaleryitem.setImageResource(galerypicker.get(i));
 
-        final ImageView backgroundimage = view2.findViewById(R.id.photo_edit_iv);
 
+        listener.onCenterImageChange(galerypicker.get(i));
 
-
-
-
-
-
-        viewHolder.imggaleryitem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                backgroundimage.setImageResource(galerypicker.get(i));
-
-//                changeimage(galerypicker.get(i));
-
-
-//                viewHolder.backgroundimage.setImageResource(galerypicker.get(i));
-
-                view2.findViewById(R.id.photo_edit_iv).setBackgroundResource(R.drawable.a1);
-
-//                ImageView backgroundimage = view2.findViewById(R.id.photo_edit_iv);
-
-//                viewHolder.backgroundimage.setImageResource(R.drawable.a3);
-
-//                Log.i("1234", "Second resource :"+ galerypicker.get(i));
-
-//                Log.i("1234", "Second resource :"+viewHolder.backgroundimage.getResources().toString());
-            }
-        });
-
+        /*
+        holder.itemView.setonClickListener(new View.OnClickListener(){
+            Glide.with(view.getContext()).load(string_url)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .fitCenter()
+                    .crossFade()
+                    .into(img_back);
+                    */
     }
-    private void changeimage(int x){
-//        view2.findViewById(R.id.photo_edit_iv).setBackgroundResource(x);
-//        view2.findViewById(R.id.photo_edit_iv).setImageResource(x);
 
-    }
 
     @Override
     public int getItemCount() {
@@ -91,15 +71,25 @@ public class ImageGaleryAdapter extends RecyclerView.Adapter<ImageGaleryAdapter.
     }
 
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView imggaleryitem;
         ImageView backgroundimage;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-//            backgroundimage = view2.findViewById(R.id.photo_edit_iv);
+            backgroundimage = itemView.findViewById(R.id.photo_edit_iv);
             imggaleryitem = itemView.findViewById(R.id.imggaleryitem);
+            itemView.setClickable(true);
+            itemView.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+//            Toast.makeText(context, "Position :"+getPosition(), Toast.LENGTH_SHORT).show();
+//            backgroundimage.setImageResource(galerypicker.get(getPosition()));
+//            Log.i("1234","Position is : "+getPosition());
 
         }
     }

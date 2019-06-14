@@ -43,6 +43,7 @@ import com.ahmedadeltito.photoeditorsdk.OnPhotoEditorSDKListener;
 import com.ahmedadeltito.photoeditorsdk.PhotoEditorSDK;
 import com.ahmedadeltito.photoeditorsdk.ViewType;
 import com.xiteb.mortivationalquotes.R;
+import com.xiteb.mortivationalquotes.RecyclerImageClick;
 import com.xiteb.mortivationalquotes.adapter.ColorPickerAdapter;
 import com.xiteb.mortivationalquotes.adapter.ImageGaleryAdapter;
 import com.xiteb.mortivationalquotes.adapter.PopupAdapter;
@@ -54,7 +55,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnPhotoEditorSDKListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnPhotoEditorSDKListener, RecyclerImageClick {
 
     private final String TAG = "PhotoEditorActivity";
     private RelativeLayout parentImageRelativeLayout;
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ArrayList<Integer> galerypicker;
     private int colorCodeTextView = -1;
     private PhotoEditorSDK photoEditorSDK;
-    ImageView photoEditImageView;
+    public ImageView photoEditImageView;
     private static final int PERMISSION_REQUEST_CODE = 1;
 
 
@@ -88,34 +89,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         backgroundrecyclerview = findViewById(R.id.backgroundrecyclerview);
         drawingViewColorPickerRecyclerView = (RecyclerView) findViewById(R.id.drawing_view_color_picker_recycler_view);
         parentImageRelativeLayout = (RelativeLayout) findViewById(R.id.parent_image_rl);
-//        TextView closeTextView = (TextView) findViewById(R.id.close_tv);
-//        TextView addTextView = (TextView) findViewById(R.id.add_text_tv);
-//        TextView addPencil = (TextView) findViewById(R.id.add_pencil_tv);
         RelativeLayout deleteRelativeLayout = (RelativeLayout) findViewById(R.id.delete_rl);
         TextView deleteTextView = (TextView) findViewById(R.id.delete_tv);
-//        TextView saveTextView = (TextView) findViewById(R.id.save_tv);
-//        TextView saveTextTextView = (TextView) findViewById(R.id.save_text_tv);
-//        undoTextView = (TextView) findViewById(R.id.undo_tv);
-//        undoTextTextView = (TextView) findViewById(R.id.undo_text_tv);
         doneDrawingTextView = (TextView) findViewById(R.id.done_drawing_tv);
         eraseDrawingTextView = (TextView) findViewById(R.id.erase_drawing_tv);
-//        TextView clearAllTextView = (TextView) findViewById(R.id.clear_all_tv);
-//        TextView clearAllTextTextView = (TextView) findViewById(R.id.clear_all_text_tv);
-//        TextView goToNextTextView = (TextView) findViewById(R.id.go_to_next_screen_tv);
         photoEditImageView = (ImageView) findViewById(R.id.photo_edit_iv);
         mLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
-//        topShadow = findViewById(R.id.top_shadow);
-//        topShadowRelativeLayout = (RelativeLayout) findViewById(R.id.top_parent_rl);
-//        bottomShadow = findViewById(R.id.bottom_shadow);
-//        bottomShadowRelativeLayout = (RelativeLayout) findViewById(R.id.bottom_parent_rl);
 
-//        closeTextView.setTypeface(newFont);
-//        addTextView.setTypeface(newFont);
-//        addPencil.setTypeface(newFont);
-//        saveTextView.setTypeface(newFont);
-//        undoTextView.setTypeface(newFont);
-//        clearAllTextView.setTypeface(newFont);
-//        goToNextTextView.setTypeface(newFont);
         deleteTextView.setTypeface(newFont);
 
         final List<Fragment> fragmentsList = new ArrayList<>();
@@ -318,7 +298,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, true);
         backgroundrecyclerview.setLayoutManager(layoutManager);
         backgroundrecyclerview.setHasFixedSize(true);
-        ImageGaleryAdapter imageGaleryAdapter = new ImageGaleryAdapter(MainActivity.this, galerypicker);
+        ImageGaleryAdapter imageGaleryAdapter = new ImageGaleryAdapter(this, galerypicker);
 
 
 
@@ -634,6 +614,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.i("TEXT", "onStopViewChangeListener");
                 break;
         }
+    }
+
+    @Override
+    public void onCenterImageChange(Integer imagePath) {
+        photoEditImageView.setImageResource(imagePath);
     }
 
     private class PreviewSlidePagerAdapter extends FragmentStatePagerAdapter {
