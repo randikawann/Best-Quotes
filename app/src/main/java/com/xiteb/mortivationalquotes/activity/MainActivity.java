@@ -1,4 +1,4 @@
-package com.xiteb.mortivationalquotes;
+package com.xiteb.mortivationalquotes.activity;
 
 import android.Manifest;
 import android.app.Activity;
@@ -27,7 +27,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -43,6 +42,7 @@ import android.widget.Toast;
 import com.ahmedadeltito.photoeditorsdk.OnPhotoEditorSDKListener;
 import com.ahmedadeltito.photoeditorsdk.PhotoEditorSDK;
 import com.ahmedadeltito.photoeditorsdk.ViewType;
+import com.xiteb.mortivationalquotes.R;
 import com.xiteb.mortivationalquotes.adapter.ColorPickerAdapter;
 import com.xiteb.mortivationalquotes.adapter.ImageGaleryAdapter;
 import com.xiteb.mortivationalquotes.adapter.PopupAdapter;
