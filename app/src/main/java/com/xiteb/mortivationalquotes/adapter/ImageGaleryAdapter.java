@@ -54,6 +54,7 @@ public class ImageGaleryAdapter extends RecyclerView.Adapter<ImageGaleryAdapter.
 
         listener.onCenterImageChange(galerypicker.get(i));
 
+
         /*
         holder.itemView.setonClickListener(new View.OnClickListener(){
             Glide.with(view.getContext()).load(string_url)
