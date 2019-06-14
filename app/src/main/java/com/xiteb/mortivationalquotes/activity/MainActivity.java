@@ -180,6 +180,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+
     private void textfontcolorchange() {
     }
 
@@ -617,9 +618,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onCenterImageChange(Integer imagePath) {
+    public void myClickListener(int imagePath) {
         photoEditImageView.setImageResource(imagePath);
     }
+
+    @Override
+    public void colorchange() {
+        photoEditImageView.setImageResource(0);
+        photoEditImageView.setBackgroundColor(colorPickerColors.get(1));
+
+    }
+
+    //    @Override
+//    public void onCenterImageChange(Integer imagePath) {
+//        photoEditImageView.setImageResource(imagePath);
+//    }
+//
+//
 
     private class PreviewSlidePagerAdapter extends FragmentStatePagerAdapter {
         private List<Fragment> mFragments;

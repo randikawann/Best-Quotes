@@ -52,7 +52,19 @@ public class ImageGaleryAdapter extends RecyclerView.Adapter<ImageGaleryAdapter.
         viewHolder.imggaleryitem.setImageResource(galerypicker.get(i));
 
 
-        listener.onCenterImageChange(galerypicker.get(i));
+
+
+        viewHolder.imggaleryitem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(i != 0){
+                    listener.myClickListener(galerypicker.get(i));
+                }else{
+                    listener.colorchange();
+                }
+
+            }
+        });
 
 
         /*
