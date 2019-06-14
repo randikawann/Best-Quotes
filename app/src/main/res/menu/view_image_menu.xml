@@ -13,14 +13,14 @@
         android:id="@+id/action_downloaditem"
         android:enabled="true"
         android:icon="@drawable/down24white"
-        android:title="download"
+        android:title="Download"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_shareitem"
         android:enabled="true"
         android:icon="@drawable/down24white"
-        android:title="share"
+        android:title="Share"
         app:showAsAction="ifRoom" />
 
 
