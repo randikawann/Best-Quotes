@@ -2,8 +2,10 @@ package com.xiteb.mortivationalquotes.activity;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
@@ -11,6 +13,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -506,12 +509,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("imagePath", photoEditorSDK.saveImage("PhotoEditorSDK", imageName));
                 setResult(Activity.RESULT_OK, returnIntent);
+
 //                finish();
+                startActivity(new Intent(MainActivity.this, MainActivity.class));
+
 
 
 
             }
         }.start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Are you sure?")
+                .setMessage("Are you sure you want to Exit?")
+
+                // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(MainActivity.this, MenuActivity.class));
+                    }
+                })
+
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton("No", null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+
     }
 
     private void savenshareimage(){
@@ -529,29 +556,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
                 String imageName = "IMG_" + timeStamp + ".png";
                 Intent returnIntent = new Intent();
-                returnIntent.putExtra("imagePath", photoEditorSDK.saveImage("PhotoEditorSDK", imageName));
+                returnIntent.putExtra("imagePath", photoEditorSDK.saveshareImage("PhotoEditorSDK", imageName));
                 setResult(Activity.RESULT_OK, returnIntent);
-//                finish();
 
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
 
-                String imagePath = Environment.getExternalStorageDirectory() + File.separator +"Pictures"+File.separator+ "PhotoEditorSDK"+File.separator+ imageName;
-                Log.i("1234", "Image path : "+ imagePath);
-                File imageFileToShare = new File(imagePath);
+                new Handler().postDelayed(new Runnable() {
 
-                Uri phototUri;
-
-                if (Build.VERSION.SDK_INT < 24) {
-                    phototUri = Uri.fromFile(imageFileToShare);
-                } else {
-                    phototUri = Uri.parse(imageFileToShare.getPath()); // My work-around for new SDKs, causes ActivityNotFoundException in API 10.
-                }
-
-                shareIntent.setType("image/*");
-                shareIntent.putExtra(Intent.EXTRA_STREAM, phototUri);
-                shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                startActivity(Intent.createChooser(shareIntent, "Share Via"));
-
+                    @Override
+                    public void run() {
+                        finish();
+                    }
+                }, 3000);
 
 
             }

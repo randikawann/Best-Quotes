@@ -163,9 +163,16 @@ public class ImageVIewActivity extends AppCompatActivity {
             fos.close();
             Toast.makeText(ImageVIewActivity.this, "Image Save to Quotes Dowloads", Toast.LENGTH_SHORT).show();
 //            this.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + Environment.getExternalStorageDirectory())));
-            this.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.fromFile(root)));
+//            this.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.fromFile(root)));
         } catch (Exception e) {
             Log.e("1234", e.getMessage(), e);
         }
+        //this is for save file in media storage
+
+//        String path = mediaStorageDir.getPath() + File.separator
+//                + "IMG_Some_name.jpg";
+//        Log.i("1234","path"+ mypath);
+        this.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + mypath)));
+
     }
 }

@@ -1,8 +1,11 @@
 package com.ahmedadeltito.photoeditorsdk;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.ColorInt;
 import android.util.Log;
@@ -184,6 +187,56 @@ public class PhotoEditorSDK implements MultiTouchListener.OnMultiTouchListener {
         if (brushDrawingView != null)
             brushDrawingView.clearAll();
     }
+//    saveshareImage
+public String saveshareImage(String folderName, String imageName) {
+    String selectedOutputPath = "";
+    if (isSDCARDMounted()) {
+        File mediaStorageDir = new File(
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), folderName);
+        // Create a storage directory if it does not exist
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
+                Log.d("1234", "Failed to create directory");
+            }
+        }
+        // Create a media file name
+        selectedOutputPath = mediaStorageDir.getPath() + File.separator + imageName;
+        Log.d("1234", "selected camera path " + selectedOutputPath);
+        File file = new File(selectedOutputPath);
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            if (parentView != null) {
+                parentView.setDrawingCacheEnabled(true);
+//                    parentView.getDrawingCache().compress(Bitmap.CompressFormat.JPEG, 80, out);
+                parentView.getDrawingCache().compress(Bitmap.CompressFormat.PNG, 100, out);
+            }
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+
+        String imagePath = Environment.getExternalStorageDirectory() + File.separator +"Pictures"+File.separator+ "PhotoEditorSDK"+File.separator+ imageName;
+        Log.i("1234", "Image path : "+ imagePath);
+        File imageFileToShare = new File(imagePath);
+
+        Uri phototUri;
+
+        if (Build.VERSION.SDK_INT < 24) {
+            phototUri = Uri.fromFile(imageFileToShare);
+        } else {
+            phototUri = Uri.parse(imageFileToShare.getPath()); // My work-around for new SDKs, causes ActivityNotFoundException in API 10.
+        }
+
+        shareIntent.setType("image/*");
+        shareIntent.putExtra(Intent.EXTRA_STREAM, phototUri);
+        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        context.startActivity(Intent.createChooser(shareIntent, "Share Via"));
+
+    }
+    return selectedOutputPath;
+}
 
     public String saveImage(String folderName, String imageName) {
         String selectedOutputPath = "";
@@ -212,6 +265,7 @@ public class PhotoEditorSDK implements MultiTouchListener.OnMultiTouchListener {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + selectedOutputPath)));
         }
         return selectedOutputPath;
     }
