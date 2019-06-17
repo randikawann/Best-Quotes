@@ -210,9 +210,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openAddTextPopupWindow(maintextletter, -1);
                         break;
                     case R.id.action_fontcolor:
-                        drawingViewColorPickerRecyclerView.setVisibility(View.INVISIBLE);
+                        drawingViewColorPickerRecyclerView.setVisibility(View.VISIBLE);
                         backgroundrecyclerview.setVisibility(View.INVISIBLE);
                         fontcolorchange();
+                        updateBrushDrawingView2(true);
                         break;
                     case R.id.action_fontface:
                         drawingViewColorPickerRecyclerView.setVisibility(View.INVISIBLE);
@@ -236,14 +237,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-    private void fontcolorchange() {
-        if(maintextcolor == getResources().getColor(R.color.black)){
-            maintextcolor = getResources().getColor(R.color.red_color_picker);
-        }else{
-            maintextcolor = getResources().getColor(R.color.black);
-        }
-        addText(maintextletter, maintextcolor, maintextface);
-    }
+
 
 
 
@@ -369,6 +363,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
+    private void fontcolorchange() {
+//        if(maintextcolor == getResources().getColor(R.color.black)){
+//            maintextcolor = getResources().getColor(R.color.red_color_picker);
+//        }else{
+//            maintextcolor = getResources().getColor(R.color.black);
+//        }
+        addText(maintextletter, maintextcolor, maintextface);
+
+    }
+
+
 
     private void fontfacechange() {
 
@@ -407,6 +412,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
+
+    private void updateBrushDrawingView2(boolean brushDrawingMode) {
+
+//        photoEditorSDK.setBrushDrawingMode(brushDrawingMode);
+        if (brushDrawingMode) {
+            updateView(View.GONE);
+            drawingViewColorPickerRecyclerView.setVisibility(View.VISIBLE);
+            doneDrawingTextView.setVisibility(View.VISIBLE);
+            eraseDrawingTextView.setVisibility(View.VISIBLE);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, true);
+            drawingViewColorPickerRecyclerView.setLayoutManager(layoutManager);
+            drawingViewColorPickerRecyclerView.setHasFixedSize(true);
+            ColorPickerAdapter colorPickerAdapter = new ColorPickerAdapter(MainActivity.this, colorPickerColors);
+            colorPickerAdapter.setOnColorPickerClickListener(new ColorPickerAdapter.OnColorPickerClickListener() {
+                @Override
+                public void onColorPickerClickListener(int colorCode) {
+                    photoEditorSDK.setBrushColor(colorCode);
+//                    photoEditImageView.setBackgroundColor(getResources().getColor(R.color.blue_color_picker));
+//                    photoEditImageView.setBackgroundColor(colorCode);
+
+                    maintextcolor = colorCode;
+                    addText(maintextletter, maintextcolor, maintextface);
+
+
+                }
+            });
+
+            drawingViewColorPickerRecyclerView.setAdapter(colorPickerAdapter);
+            //wedfgcvh
+
+
+        } else {
+            updateView(View.VISIBLE);
+            drawingViewColorPickerRecyclerView.setVisibility(View.GONE);
+            doneDrawingTextView.setVisibility(View.GONE);
+            eraseDrawingTextView.setVisibility(View.GONE);
+        }
+    }
+
 
     private void updateBrushDrawingView(boolean brushDrawingMode) {
 
