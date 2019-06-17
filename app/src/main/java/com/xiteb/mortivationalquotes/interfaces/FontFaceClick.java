@@ -1,4 +1,4 @@
-package com.xiteb.mortivationalquotes;
+package com.xiteb.mortivationalquotes.interfaces;
 
 import android.graphics.Typeface;
 

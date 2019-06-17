@@ -1,4 +1,4 @@
-package com.xiteb.mortivationalquotes;
+package com.xiteb.mortivationalquotes.adapter;
 
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
@@ -8,7 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.xiteb.mortivationalquotes.adapter.ImageGaleryAdapter;
+import com.xiteb.mortivationalquotes.interfaces.FontFaceClick;
+import com.xiteb.mortivationalquotes.R;
 
 import java.util.ArrayList;
 

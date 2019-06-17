@@ -1,22 +1,16 @@
 package com.xiteb.mortivationalquotes.adapter;
 
-import android.content.Context;
-import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.xiteb.mortivationalquotes.R;
-import com.xiteb.mortivationalquotes.RecyclerImageClick;
+import com.xiteb.mortivationalquotes.interfaces.RecyclerImageClick;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class ImageGaleryAdapter extends RecyclerView.Adapter<ImageGaleryAdapter.ViewHolder>  {
 
