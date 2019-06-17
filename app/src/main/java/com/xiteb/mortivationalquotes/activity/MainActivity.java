@@ -271,7 +271,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void openAddTextPopupWindow(String text, int colorCode) {
-
+        if(text.equals("Click Here")){
+            text = "";
+        }
 
         colorCodeTextView = colorCode;
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
