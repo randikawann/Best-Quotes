@@ -42,6 +42,8 @@ import android.widget.Toast;
 import com.ahmedadeltito.photoeditorsdk.OnPhotoEditorSDKListener;
 import com.ahmedadeltito.photoeditorsdk.PhotoEditorSDK;
 import com.ahmedadeltito.photoeditorsdk.ViewType;
+import com.xiteb.mortivationalquotes.FontFaceAdapter;
+import com.xiteb.mortivationalquotes.FontFaceClick;
 import com.xiteb.mortivationalquotes.R;
 import com.xiteb.mortivationalquotes.RecyclerImageClick;
 import com.xiteb.mortivationalquotes.adapter.ColorPickerAdapter;
@@ -55,7 +57,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnPhotoEditorSDKListener, RecyclerImageClick {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnPhotoEditorSDKListener, RecyclerImageClick, FontFaceClick {
 
     private final String TAG = "PhotoEditorActivity";
     private RelativeLayout parentImageRelativeLayout;
@@ -69,9 +71,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RelativeLayout bottomShadowRelativeLayout;
     private ArrayList<Integer> colorPickerColors;
     private ArrayList<Integer> galerypicker;
+    private ArrayList<Typeface> fontfacepicker;
     private int colorCodeTextView = -1;
     private PhotoEditorSDK photoEditorSDK;
     public ImageView photoEditImageView;
+
+    Typeface newFont;
+    Typeface fontAlexBrush;
+    Typeface fontAmaticSC;
+    Typeface fontGeateVibes;
+    Typeface fontLato;
+    Typeface fontMontserrate;
+
+    String maintextletter;
+    int maintextcolor;
+    Typeface maintextface;
+
+
     private static final int PERMISSION_REQUEST_CODE = 1;
 
 
@@ -84,7 +100,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Typeface newFont = Typeface.createFromAsset(getAssets(), "Eventtus-Icons.ttf");
+        newFont = Typeface.createFromAsset(getAssets(), "Eventtus-Icons.ttf");
+
+        fontAlexBrush = Typeface.createFromAsset(getAssets(), "AlexBrush-Regular.ttf");
+        fontAmaticSC = Typeface.createFromAsset(getAssets(), "Amatic-Bold.ttf");
+        fontGeateVibes = Typeface.createFromAsset(getAssets(), "GreatVibes-Regular.otf");
+        fontLato = Typeface.createFromAsset(getAssets(), "Lato-Black.ttf");
+        fontMontserrate = Typeface.createFromAsset(getAssets(), "Montserrat-Bold.otf");
+
+
+        fontfacepicker = new ArrayList<Typeface>();
+        fontfacepicker.add(newFont);
+        fontfacepicker.add(fontAlexBrush);
+        fontfacepicker.add(fontGeateVibes);
+        fontfacepicker.add(fontLato);
+        fontfacepicker.add(fontMontserrate);
+
+        // Default text styles;
+        maintextletter = "Click Here";
+        maintextcolor = getResources().getColor(R.color.black);
+        maintextface = newFont;
+
+
 
         backgroundrecyclerview = findViewById(R.id.backgroundrecyclerview);
         drawingViewColorPickerRecyclerView = (RecyclerView) findViewById(R.id.drawing_view_color_picker_recycler_view);
@@ -108,8 +145,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .buildPhotoEditorSDK(); // build photo editor sdk
         photoEditorSDK.setOnPhotoEditorSDKListener(this);
 
-        addText("Enter your text here", getResources().getColor(R.color.black));
-        maintextvalue = "Enter your text here";
+
+        addText(maintextletter, maintextcolor, maintextface);
 
 
 
@@ -133,6 +170,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         galerypicker.add(R.drawable.a4);
         galerypicker.add(R.drawable.a5);
         galerypicker.add(R.drawable.a6);
+
+
 
 //        galerypicker = new int[]{R.drawable.above_shadow, R.drawable.below_shadow, R.drawable.below_shadow};
 // later...
@@ -165,11 +204,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_quotes:
+                        drawingViewColorPickerRecyclerView.setVisibility(View.INVISIBLE);
                         backgroundrecyclerview.setVisibility(View.INVISIBLE);
 //                        addgaleryvalue();
-                        openAddTextPopupWindow(maintextvalue, -1);
+                        openAddTextPopupWindow(maintextletter, -1);
+                        break;
+                    case R.id.action_fontcolor:
+                        drawingViewColorPickerRecyclerView.setVisibility(View.INVISIBLE);
+                        backgroundrecyclerview.setVisibility(View.INVISIBLE);
+                        fontcolorchange();
+                        break;
+                    case R.id.action_fontface:
+                        drawingViewColorPickerRecyclerView.setVisibility(View.INVISIBLE);
+                        backgroundrecyclerview.setVisibility(View.VISIBLE);
+                        fontfacechange();
                         break;
                     case R.id.action_background:
+                        drawingViewColorPickerRecyclerView.setVisibility(View.VISIBLE);
                         backgroundrecyclerview.setVisibility(View.VISIBLE);
                         galleyimageselect();
                         updateBrushDrawingView(true);
@@ -184,8 +235,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    private void textfontcolorchange() {
+
+    private void fontcolorchange() {
+        if(maintextcolor == getResources().getColor(R.color.black)){
+            maintextcolor = getResources().getColor(R.color.red_color_picker);
+        }else{
+            maintextcolor = getResources().getColor(R.color.black);
+        }
+        addText(maintextletter, maintextcolor, maintextface);
     }
+
+
 
     private boolean stringIsNotEmpty(String string) {
         if (string != null && !string.equals("null")) {
@@ -196,10 +256,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
-
-    private void addText(String text, int colorCodeTextView) {
+    private void addText(String text, int colorCodeTextView, Typeface fontface) {
+        Log.i("1234", "Pop up text "+text+" "+colorCodeTextView+" "+fontface);
         photoEditorSDK.clearAllViews();
-        photoEditorSDK.addText(text, colorCodeTextView);
+//        photoEditorSDK.addText(text, colorCodeTextView, newFont);
+
+        photoEditorSDK.addText(text, colorCodeTextView, fontface);
     }
 
     private void clearAllViews() {
@@ -215,6 +277,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void openAddTextPopupWindow(String text, int colorCode) {
+
+
         colorCodeTextView = colorCode;
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View addTextPopupWindowRootView = inflater.inflate(R.layout.add_text_popup_window, null);
@@ -225,6 +289,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         addTextColorPickerRecyclerView.setLayoutManager(layoutManager);
         addTextColorPickerRecyclerView.setHasFixedSize(true);
+
+
         ColorPickerAdapter colorPickerAdapter = new ColorPickerAdapter(MainActivity.this, colorPickerColors);
         colorPickerAdapter.setOnColorPickerClickListener(new ColorPickerAdapter.OnColorPickerClickListener() {
             @Override
@@ -238,6 +304,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             addTextEditText.setText(text);
             addTextEditText.setTextColor(colorCode == -1 ? getResources().getColor(R.color.white) : colorCode);
         }
+        ///
+
+        //
         final PopupWindow pop = new PopupWindow(MainActivity.this);
         pop.setContentView(addTextPopupWindowRootView);
         pop.setWidth(LinearLayout.LayoutParams.MATCH_PARENT);
@@ -254,10 +323,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 addgaleryvalue();
             }
         });
+
+
+
         addTextDoneTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addText(addTextEditText.getText().toString(), colorCodeTextView);
+                maintextcolor = colorCodeTextView;
+                maintextletter = addTextEditText.getText().toString();
+                addText(maintextletter, colorCodeTextView, maintextface);
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 pop.dismiss();
@@ -295,6 +369,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
+
+    private void fontfacechange() {
+
+//        if(maintextface == newFont){
+//            maintextface = fontAlexBrush;
+//        }else{
+//            maintextface = newFont;
+//        }
+//        addText(maintextletter, maintextcolor, maintextface);
+
+        updateView(View.VISIBLE);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, true);
+        backgroundrecyclerview.setLayoutManager(layoutManager);
+        backgroundrecyclerview.setHasFixedSize(true);
+        FontFaceAdapter fontFaceAdapter = new FontFaceAdapter(this, fontfacepicker);
+
+
+
+        backgroundrecyclerview.setAdapter(fontFaceAdapter);
+
+    }
     private void galleyimageselect(){
 //        photoEditImageView.setImageResource(R.drawable.a3);
 //        Log.i("1234", "1st resource : "+photoEditImageView.getResources().toString());
@@ -620,12 +715,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    //interface
     @Override
     public void myClickListener(int imagePath) {
         drawingViewColorPickerRecyclerView.setVisibility(View.INVISIBLE);
         photoEditImageView.setImageResource(imagePath);
     }
 
+    //interface
     @Override
     public void colorchange() {
         drawingViewColorPickerRecyclerView.setVisibility(View.VISIBLE);
@@ -634,12 +731,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    //    @Override
-//    public void onCenterImageChange(Integer imagePath) {
-//        photoEditImageView.setImageResource(imagePath);
-//    }
-//
-//
+    //interface
+    @Override
+    public void fontchange(Typeface typeface) {
+
+        maintextface = typeface;
+
+        addText(maintextletter, maintextcolor, maintextface);
+
+    }
 
     private class PreviewSlidePagerAdapter extends FragmentStatePagerAdapter {
         private List<Fragment> mFragments;

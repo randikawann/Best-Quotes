@@ -7,14 +7,26 @@
         android:enabled="true"
         android:icon="@drawable/down24white"
         android:title="Quotes"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
+    <item
+        android:id="@+id/action_fontcolor"
+        android:enabled="true"
+        android:icon="@drawable/down24white"
+        android:title="Font Color"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_fontface"
+        android:enabled="true"
+        android:icon="@drawable/down24white"
+        android:title="Font face"
+        app:showAsAction="always" />
     <item
         android:id="@+id/action_background"
         android:enabled="true"
         android:icon="@drawable/down24white"
         android:title="Background"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
 
 </menu>
