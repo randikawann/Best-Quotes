@@ -20,6 +20,7 @@ public class QuotesAdapter extends RecyclerView.Adapter<QuotesAdapter.QuoteViewH
 
     Context context;
     List<Quote> quotelist;
+    int quoteimage[] = {R.drawable.pic1, R.drawable.pic2, R.drawable.pic3, R.drawable.pic4, R.drawable.pic5, R.drawable.pic6, R.drawable.pic7};
 
     public QuotesAdapter(Context context, List<Quote> quotelist){
         this.context = context;
@@ -49,6 +50,7 @@ public class QuotesAdapter extends RecyclerView.Adapter<QuotesAdapter.QuoteViewH
 //        quoteViewHolder.imgquotthumb.setBackground(context.getDrawable(R.drawable.mainquoteback));
 
 //        Log.i("1234", "title value :"+quotelist.get(i).getTitle());
+
         quoteViewHolder.imgquotthumb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,11 +61,15 @@ public class QuotesAdapter extends RecyclerView.Adapter<QuotesAdapter.QuoteViewH
             }
         });
 
-        Glide.with(context)
-                .load(quotelist.get(i).getThumbnailUrl())
-                .centerCrop()
-//                .placeholder(R.drawable.loading_spinner)
-                .into(quoteViewHolder.imgquotthumb);
+//        Glide.with(context)
+//                .load(quotelist.get(i).getThumbnailUrl())
+//                .centerCrop()
+////                .placeholder(R.drawable.loading_spinner)
+//                .into(quoteViewHolder.imgquotthumb);
+
+//        quoteViewHolder.imgquotthumb.setBackground(context.getDrawable(quoteimage[i]));
+
+        quoteViewHolder.imgquotthumb.setImageResource(quoteimage[i]);
 
 
 
@@ -71,7 +77,9 @@ public class QuotesAdapter extends RecyclerView.Adapter<QuotesAdapter.QuoteViewH
 
     @Override
     public int getItemCount() {
-        return quotelist.size();
+
+//        return quotelist.size();
+        return quoteimage.length;
     }
 
     class QuoteViewHolder extends RecyclerView.ViewHolder {
