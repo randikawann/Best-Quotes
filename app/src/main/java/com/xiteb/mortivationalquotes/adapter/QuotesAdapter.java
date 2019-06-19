@@ -20,7 +20,32 @@ public class QuotesAdapter extends RecyclerView.Adapter<QuotesAdapter.QuoteViewH
 
     Context context;
     List<Quote> quotelist;
-    int quoteimage[] = {R.drawable.pic1, R.drawable.pic2, R.drawable.pic3, R.drawable.pic4, R.drawable.pic5, R.drawable.pic6, R.drawable.pic7};
+    int quoteimage[] = {
+            R.drawable.pic1,
+            R.drawable.pic2,
+            R.drawable.pic3,
+            R.drawable.pic4,
+            R.drawable.pic5,
+            R.drawable.pic6,
+            R.drawable.pic7,
+            R.drawable.pic8,
+            R.drawable.pic9,
+            R.drawable.pic10,
+            R.drawable.pic11,
+            R.drawable.pic12,
+            R.drawable.pic13,
+            R.drawable.pic14,
+            R.drawable.pic15,
+            R.drawable.pic16,
+            R.drawable.pic17,
+            R.drawable.pic18,
+            R.drawable.pic19,
+            R.drawable.pic20,
+            R.drawable.pic21,
+            R.drawable.pic22,
+            R.drawable.pic23
+
+    };
 
     public QuotesAdapter(Context context, List<Quote> quotelist){
         this.context = context;
@@ -33,7 +58,8 @@ public class QuotesAdapter extends RecyclerView.Adapter<QuotesAdapter.QuoteViewH
 
         View view;
         LayoutInflater mInflate =LayoutInflater.from(context);
-        view = mInflate.inflate(R.layout.quotecardlistitem, viewGroup, false);
+//        view = mInflate.inflate(R.layout.quotecardlistitem, viewGroup, false);
+        view = mInflate.inflate(R.layout.quotecardviewitem, viewGroup, false);
         return new QuoteViewHolder(view);
     }
 
@@ -55,7 +81,9 @@ public class QuotesAdapter extends RecyclerView.Adapter<QuotesAdapter.QuoteViewH
             @Override
             public void onClick(View v) {
                 Intent goimageviewactivity = new Intent(context, ImageVIewActivity.class);
-                goimageviewactivity.putExtra("imgeurl", quotelist.get(i).getUrl());
+//                goimageviewactivity.putExtra("imgeurl", quotelist.get(i).getUrl());
+//                goimageviewactivity.getIntExtra("imgurlint",quoteimage[i]);
+                goimageviewactivity.putExtra("imgurlint2",quoteimage[i]);
                 goimageviewactivity.putExtra("titletext", quotelist.get(i).getTitle());
                 context.startActivity(goimageviewactivity);
             }
@@ -68,7 +96,6 @@ public class QuotesAdapter extends RecyclerView.Adapter<QuotesAdapter.QuoteViewH
 //                .into(quoteViewHolder.imgquotthumb);
 
 //        quoteViewHolder.imgquotthumb.setBackground(context.getDrawable(quoteimage[i]));
-
         quoteViewHolder.imgquotthumb.setImageResource(quoteimage[i]);
 
 

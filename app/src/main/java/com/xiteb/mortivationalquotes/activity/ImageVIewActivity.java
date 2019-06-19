@@ -40,19 +40,23 @@ public class ImageVIewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_view);
 
-        String imgurl = getIntent().getStringExtra("imgeurl");
+//        String imgurl = getIntent().getStringExtra("imgeurl");
+        int imgurlint = getIntent().getIntExtra("imgurlint2",R.drawable.pic1);
         titletext = getIntent().getStringExtra("titletext");
-//        Log.i("1234", "img value :"+titletext);
+        Log.i("1234", "img value :"+imgurlint);
 
         imgmailview = findViewById(R.id.imgmailview);
+
         
 //        tvmaintext.setText(titletext);
 
-        Glide.with(this)
-                .load(imgurl)
-                .centerCrop()
-//                .placeholder(R.drawable.loading_spinner)
-                .into(imgmailview);
+//        Glide.with(this)
+//                .load(imgurl)
+//                .centerCrop()
+////                .placeholder(R.drawable.loading_spinner)
+//                .into(imgmailview);
+
+        imgmailview.setImageResource(imgurlint);
 
         //Bottom navigation
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation_view_image);

@@ -70,7 +70,7 @@ public class MortivationFragment extends Fragment {
     private void generateDataList(List<Quote> quotelist) {
 
         recuclermortifragment = v.findViewById(R.id.recuclermortifragment);
-        recuclermortifragment.setHasFixedSize(true);
+//        recuclermortifragment.setHasFixedSize(true);
         quotesAdapter = new QuotesAdapter(getContext(), quotelist);
         recuclermortifragment.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recuclermortifragment.setAdapter(quotesAdapter);
