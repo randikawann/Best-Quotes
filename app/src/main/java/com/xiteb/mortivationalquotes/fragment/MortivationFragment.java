@@ -45,7 +45,12 @@ public class MortivationFragment extends Fragment {
 
         mService = Common.getadsService();
 
-        getmortivationQuotes();
+//        getmortivationQuotes();
+
+        //this is for test pupors
+        List<Quote> quotelist = null;
+        
+        generateDataList(quotelist);
 
 
         return v;

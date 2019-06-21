@@ -40,6 +40,7 @@ public class ImageVIewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_view);
 
+        getSupportActionBar().setTitle("Quotes");
 //        String imgurl = getIntent().getStringExtra("imgeurl");
         int imgurlint = getIntent().getIntExtra("imgurlint2",R.drawable.pic1);
         titletext = getIntent().getStringExtra("titletext");

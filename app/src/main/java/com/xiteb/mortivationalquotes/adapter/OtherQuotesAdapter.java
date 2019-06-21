@@ -33,7 +33,8 @@ public class OtherQuotesAdapter extends RecyclerView.Adapter<OtherQuotesAdapter.
     public OtherQuoteViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view;
         LayoutInflater mInflate =LayoutInflater.from(context);
-        view = mInflate.inflate(R.layout.othercardlisttitle, viewGroup, false);
+//        view = mInflate.inflate(R.layout.othercardlisttitle, viewGroup, false);
+        view = mInflate.inflate(R.layout.othercardviewtitle, viewGroup, false);
         return new OtherQuotesAdapter.OtherQuoteViewHolder(view);
     }
 

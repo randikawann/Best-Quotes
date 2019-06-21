@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
@@ -103,6 +104,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        getSupportActionBar().setTitle("Create Quotes");
         newFont = Typeface.createFromAsset(getAssets(), "Eventtus-Icons.ttf");
 
         fontAlexBrush = Typeface.createFromAsset(getAssets(), "AlexBrush-Regular.ttf");
@@ -233,6 +236,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
             }
         });
+
+//        bottomNavigationView.setItemIconTintList();
 
 
 

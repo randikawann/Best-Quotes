@@ -5,14 +5,14 @@
     <item
         android:id="@+id/action_save"
         android:enabled="true"
-        android:icon="@drawable/down24white"
+        android:icon="@drawable/actiondowload"
         android:title="Quotes"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_share"
         android:enabled="true"
-        android:icon="@drawable/down24white"
+        android:icon="@drawable/actionshare"
         android:title="Background"
         app:showAsAction="ifRoom" />
 

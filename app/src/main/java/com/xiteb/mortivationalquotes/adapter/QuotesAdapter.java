@@ -84,7 +84,7 @@ public class QuotesAdapter extends RecyclerView.Adapter<QuotesAdapter.QuoteViewH
 //                goimageviewactivity.putExtra("imgeurl", quotelist.get(i).getUrl());
 //                goimageviewactivity.getIntExtra("imgurlint",quoteimage[i]);
                 goimageviewactivity.putExtra("imgurlint2",quoteimage[i]);
-                goimageviewactivity.putExtra("titletext", quotelist.get(i).getTitle());
+//                goimageviewactivity.putExtra("titletext", quotelist.get(i).getTitle());
                 context.startActivity(goimageviewactivity);
             }
         });

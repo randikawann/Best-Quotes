@@ -8,9 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="createquotestheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="createquotestheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
@@ -28,7 +28,7 @@
         <item name="android:singleLine">true</item>
         <item name="colorControlNormal">#FFFFFF</item>
         <item name="colorControlActivated">#FFFFFF</item>
-        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorPrimary">#000000</item>
         <item name="android:textSize">14sp</item>
     </style>
 
