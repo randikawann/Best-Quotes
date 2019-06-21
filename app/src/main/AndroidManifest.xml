@@ -13,11 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.OtherViewActivity" android:theme="@style/createquotestheme" android:parentActivityName=".activity.MenuActivity"></activity>
+        <activity android:name=".GetStartActivity">
+
+        </activity>
+        <activity
+            android:name=".activity.OtherViewActivity"
+            android:parentActivityName=".activity.MenuActivity"
+            android:theme="@style/createquotestheme" />
         <activity
             android:name=".activity.ImageVIewActivity"
-            android:theme="@style/createquotestheme"
-            android:parentActivityName=".activity.MenuActivity" />
+            android:parentActivityName=".activity.MenuActivity"
+            android:theme="@style/createquotestheme" />
         <activity android:name=".activity.MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

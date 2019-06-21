@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
+import android.graphics.drawable.shapes.RectShape;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -53,18 +54,19 @@ public class ColorPickerAdapter extends RecyclerView.Adapter<ColorPickerAdapter.
     private void buildColorPickerView(View view, int colorCode) {
         view.setVisibility(View.VISIBLE);
 
-        ShapeDrawable biggerCircle = new ShapeDrawable(new OvalShape());
+//        ShapeDrawable biggerCircle = new ShapeDrawable(new OvalShape());
+        ShapeDrawable biggerCircle = new ShapeDrawable(new RectShape());
         biggerCircle.setIntrinsicHeight(20);
-        biggerCircle.setIntrinsicWidth(20);
-        biggerCircle.setBounds(new Rect(0, 0, 20, 20));
+        biggerCircle.setIntrinsicWidth(50);
+        biggerCircle.setBounds(new Rect(0, 0, 40, 40));
         biggerCircle.getPaint().setColor(colorCode);
 
-        ShapeDrawable smallerCircle = new ShapeDrawable(new OvalShape());
-        smallerCircle.setIntrinsicHeight(5);
-        smallerCircle.setIntrinsicWidth(5);
-        smallerCircle.setBounds(new Rect(0, 0, 5, 5));
+        ShapeDrawable smallerCircle = new ShapeDrawable(new RectShape());
+        smallerCircle.setIntrinsicHeight(18);
+        smallerCircle.setIntrinsicWidth(48);
+        smallerCircle.setBounds(new Rect(0, 0, 35, 35));
         smallerCircle.getPaint().setColor(Color.WHITE);
-        smallerCircle.setPadding(10, 10, 10, 10);
+        smallerCircle.setPadding(1, 1, 1, 1);
         Drawable[] drawables = {smallerCircle, biggerCircle};
 
         LayerDrawable layerDrawable = new LayerDrawable(drawables);

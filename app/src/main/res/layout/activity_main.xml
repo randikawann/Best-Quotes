@@ -81,18 +81,12 @@
                 android:layout_height="wrap_content">
 
 
-                <android.support.v7.widget.RecyclerView
-                    android:visibility="invisible"
-                    android:id="@+id/drawing_view_color_picker_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
 
-                    />
                 <android.support.v7.widget.RecyclerView
                     android:visibility="invisible"
                     android:id="@+id/backgroundrecyclerview"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="60dp"
                     android:layout_marginBottom="80dp"
 
                     />
@@ -100,6 +94,16 @@
 
             </LinearLayout>
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/drawing_view_color_picker_recycler_view"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="140dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:visibility="invisible" />
 
             <RelativeLayout
                 android:id="@+id/delete_rl"
@@ -150,6 +154,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/image_emoji_indicator" />
+
 
         </RelativeLayout>
 

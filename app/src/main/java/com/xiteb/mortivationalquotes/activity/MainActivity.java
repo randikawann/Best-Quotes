@@ -290,6 +290,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView addTextDoneTextView = (TextView) addTextPopupWindowRootView.findViewById(R.id.add_text_done_tv);
         TextView add_text_galery = addTextPopupWindowRootView.findViewById(R.id.add_text_galery);
         RecyclerView addTextColorPickerRecyclerView = (RecyclerView) addTextPopupWindowRootView.findViewById(R.id.add_text_color_picker_recycler_view);
+        addTextColorPickerRecyclerView.setVisibility(View.INVISIBLE);
         LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         addTextColorPickerRecyclerView.setLayoutManager(layoutManager);
         addTextColorPickerRecyclerView.setHasFixedSize(true);
@@ -300,6 +301,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onColorPickerClickListener(int colorCode) {
                 addTextEditText.setTextColor(colorCode);
+//                addTextEditText.setTextColor(maintextcolor);
                 colorCodeTextView = colorCode;
             }
         });
@@ -333,9 +335,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         addTextDoneTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                maintextcolor = colorCodeTextView;
+//                maintextcolor = colorCodeTextView;
                 maintextletter = addTextEditText.getText().toString();
-                addText(maintextletter, colorCodeTextView, maintextface);
+                addText(maintextletter, maintextcolor, maintextface);
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 pop.dismiss();
@@ -428,12 +430,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        photoEditorSDK.setBrushDrawingMode(brushDrawingMode);
         if (brushDrawingMode) {
             updateView(View.GONE);
-            drawingViewColorPickerRecyclerView.setVisibility(View.VISIBLE);
-            doneDrawingTextView.setVisibility(View.VISIBLE);
-            eraseDrawingTextView.setVisibility(View.VISIBLE);
+            drawingViewColorPickerRecyclerView.setVisibility(View.INVISIBLE);
+//            doneDrawingTextView.setVisibility(View.VISIBLE);
+//            eraseDrawingTextView.setVisibility(View.VISIBLE);
+            backgroundrecyclerview.setVisibility(View.VISIBLE);
             LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, true);
-            drawingViewColorPickerRecyclerView.setLayoutManager(layoutManager);
-            drawingViewColorPickerRecyclerView.setHasFixedSize(true);
+//            drawingViewColorPickerRecyclerView.setLayoutManager(layoutManager);
+//            drawingViewColorPickerRecyclerView.setHasFixedSize(true);
+            backgroundrecyclerview.setLayoutManager(layoutManager);
+            backgroundrecyclerview.setHasFixedSize(true);
             ColorPickerAdapter colorPickerAdapter = new ColorPickerAdapter(MainActivity.this, colorPickerColors);
             colorPickerAdapter.setOnColorPickerClickListener(new ColorPickerAdapter.OnColorPickerClickListener() {
                 @Override
@@ -449,7 +454,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             });
 
-            drawingViewColorPickerRecyclerView.setAdapter(colorPickerAdapter);
+//            drawingViewColorPickerRecyclerView.setAdapter(colorPickerAdapter);
+            backgroundrecyclerview.setAdapter(colorPickerAdapter);
             //wedfgcvh
 
 
@@ -468,8 +474,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (brushDrawingMode) {
             updateView(View.GONE);
             drawingViewColorPickerRecyclerView.setVisibility(View.VISIBLE);
-            doneDrawingTextView.setVisibility(View.VISIBLE);
-            eraseDrawingTextView.setVisibility(View.VISIBLE);
+//            doneDrawingTextView.setVisibility(View.VISIBLE);
+//            eraseDrawingTextView.setVisibility(View.VISIBLE);
 //            LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, true);
             LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, true);
             drawingViewColorPickerRecyclerView.setLayoutManager(layoutManager);

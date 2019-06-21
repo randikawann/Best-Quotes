@@ -34,7 +34,7 @@ public class ImageGaleryAdapter extends RecyclerView.Adapter<ImageGaleryAdapter.
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        View rootView = inflater.inflate(R.layout.galleryscrollitem, viewGroup, false);
+        View rootView = inflater.inflate(R.layout.galleryscrollitemcard, viewGroup, false);
         return new ViewHolder(rootView);
 
     }
