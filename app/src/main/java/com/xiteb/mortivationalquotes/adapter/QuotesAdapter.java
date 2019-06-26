@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.xiteb.mortivationalquotes.activity.ImageVIewActivity;
 import com.xiteb.mortivationalquotes.R;
+import com.xiteb.mortivationalquotes.activity.OtherViewActivity;
 import com.xiteb.mortivationalquotes.model.Quote;
 
 import java.util.List;
@@ -20,6 +21,8 @@ public class QuotesAdapter extends RecyclerView.Adapter<QuotesAdapter.QuoteViewH
 
     Context context;
     List<Quote> quotelist;
+    String[] categorydetails;
+
     int quoteimage[] = {
             R.drawable.pic1,
             R.drawable.pic2,
@@ -33,23 +36,18 @@ public class QuotesAdapter extends RecyclerView.Adapter<QuotesAdapter.QuoteViewH
             R.drawable.pic10,
             R.drawable.pic11,
             R.drawable.pic12,
-            R.drawable.pic13,
-            R.drawable.pic14,
-            R.drawable.pic15,
-            R.drawable.pic16,
-            R.drawable.pic17,
-            R.drawable.pic18,
-            R.drawable.pic19,
-            R.drawable.pic20,
-            R.drawable.pic21,
-            R.drawable.pic22,
-            R.drawable.pic23
+            R.drawable.pic13
 
     };
 
-    public QuotesAdapter(Context context, List<Quote> quotelist){
+//    public QuotesAdapter(Context context, List<Quote> quotelist){
+//        this.context = context;
+//        this.quotelist = quotelist;
+//    }
+
+    public QuotesAdapter(OtherViewActivity context, String[] categorydetails) {
         this.context = context;
-        this.quotelist = quotelist;
+        this.categorydetails = categorydetails;
     }
 
     @NonNull
@@ -106,7 +104,7 @@ public class QuotesAdapter extends RecyclerView.Adapter<QuotesAdapter.QuoteViewH
     public int getItemCount() {
 
 //        return quotelist.size();
-        return quoteimage.length;
+        return categorydetails.length;
     }
 
     class QuoteViewHolder extends RecyclerView.ViewHolder {

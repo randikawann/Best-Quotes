@@ -36,7 +36,16 @@ public class OtherViewActivity extends AppCompatActivity {
 
         mService = Common.getadsService();
 
-        getmortivationQuotes();
+//        getmortivationQuotes();
+
+        String categorydetails[] = {"Alone", "Angry", "Anniversary", "Attitude", "Birthday", "Christian", "Cute", "Dating", "Friends","Inspiration",
+                        "Love", "Relationship", "Success"};
+
+        recuclerotheractivity = findViewById(R.id.recuclerotheractivity);
+//        recuclerotheractivity.setHasFixedSize(true);
+        quotesAdapter = new QuotesAdapter(this, categorydetails);
+        recuclerotheractivity.setLayoutManager(new GridLayoutManager(this, 2));
+        recuclerotheractivity.setAdapter(quotesAdapter);
 
 
     }
@@ -59,11 +68,11 @@ public class OtherViewActivity extends AppCompatActivity {
 
     private void generateDataList(List<Quote> quotelist) {
 
-        recuclerotheractivity = findViewById(R.id.recuclerotheractivity);
-        recuclerotheractivity.setHasFixedSize(true);
-        quotesAdapter = new QuotesAdapter(this, quotelist);
-        recuclerotheractivity.setLayoutManager(new GridLayoutManager(this, 2));
-        recuclerotheractivity.setAdapter(quotesAdapter);
+//        recuclerotheractivity = findViewById(R.id.recuclerotheractivity);
+//        recuclerotheractivity.setHasFixedSize(true);
+//        quotesAdapter = new QuotesAdapter(this, quotelist);
+//        recuclerotheractivity.setLayoutManager(new GridLayoutManager(this, 2));
+//        recuclerotheractivity.setAdapter(quotesAdapter);
 
     }
 
