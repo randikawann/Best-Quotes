@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-
+/*
         colorPickerColors = new ArrayList<>();
         colorPickerColors.add(getResources().getColor(R.color.black));
         colorPickerColors.add(getResources().getColor(R.color.blue_color_picker));
@@ -200,6 +200,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         colorPickerColors.add(getResources().getColor(R.color.white));
         colorPickerColors.add(getResources().getColor(R.color.yellow_color_picker));
         colorPickerColors.add(getResources().getColor(R.color.yellow_green_color_picker));
+*/
+
+        colorPickerColors = new ArrayList<>();
+        colorPickerColors.add(getResources().getColor(R.color.color1));
+        colorPickerColors.add(getResources().getColor(R.color.color2));
+        colorPickerColors.add(getResources().getColor(R.color.color3));
+        colorPickerColors.add(getResources().getColor(R.color.color4));
+        colorPickerColors.add(getResources().getColor(R.color.color5));
+        colorPickerColors.add(getResources().getColor(R.color.color6));
+        colorPickerColors.add(getResources().getColor(R.color.color7));
+        colorPickerColors.add(getResources().getColor(R.color.color8));
+        colorPickerColors.add(getResources().getColor(R.color.color9));
+        colorPickerColors.add(getResources().getColor(R.color.color10));
+        colorPickerColors.add(getResources().getColor(R.color.color11));
+        colorPickerColors.add(getResources().getColor(R.color.color12));
+        colorPickerColors.add(getResources().getColor(R.color.color13));
+        colorPickerColors.add(getResources().getColor(R.color.color14));
+        colorPickerColors.add(getResources().getColor(R.color.color15));
+        colorPickerColors.add(getResources().getColor(R.color.color16));
+        colorPickerColors.add(getResources().getColor(R.color.color17));
+        colorPickerColors.add(getResources().getColor(R.color.color18));
+        colorPickerColors.add(getResources().getColor(R.color.color19));
+        colorPickerColors.add(getResources().getColor(R.color.color20));
+        colorPickerColors.add(getResources().getColor(R.color.color21));
 
 
 
@@ -434,7 +458,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            doneDrawingTextView.setVisibility(View.VISIBLE);
 //            eraseDrawingTextView.setVisibility(View.VISIBLE);
             backgroundrecyclerview.setVisibility(View.VISIBLE);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, true);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
 //            drawingViewColorPickerRecyclerView.setLayoutManager(layoutManager);
 //            drawingViewColorPickerRecyclerView.setHasFixedSize(true);
             backgroundrecyclerview.setLayoutManager(layoutManager);
@@ -447,6 +471,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                    photoEditImageView.setBackgroundColor(getResources().getColor(R.color.blue_color_picker));
 //                    photoEditImageView.setBackgroundColor(colorCode);
 
+//                    Log.i("1234", "Color code :"+colorCode);
                     maintextcolor = colorCode;
                     addText(maintextletter, maintextcolor, maintextface);
 
@@ -477,7 +502,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            doneDrawingTextView.setVisibility(View.VISIBLE);
 //            eraseDrawingTextView.setVisibility(View.VISIBLE);
 //            LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, true);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, true);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false);
             drawingViewColorPickerRecyclerView.setLayoutManager(layoutManager);
             drawingViewColorPickerRecyclerView.setHasFixedSize(true);
             ColorPickerAdapter colorPickerAdapter = new ColorPickerAdapter(MainActivity.this, colorPickerColors);

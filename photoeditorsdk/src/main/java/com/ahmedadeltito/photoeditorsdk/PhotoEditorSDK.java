@@ -72,7 +72,7 @@ public class PhotoEditorSDK implements MultiTouchListener.OnMultiTouchListener {
         TextView addTextView = (TextView) addTextRootView.findViewById(R.id.photo_editor_sdk_text_tv);
         addTextView.setGravity(Gravity.CENTER);
         addTextView.setText(text);
-        if (colorCodeTextView != -1)
+//        if (colorCodeTextView != -1)
             addTextView.setTextColor(colorCodeTextView);
             addTextView.setTypeface(fontface);
         MultiTouchListener multiTouchListener = new MultiTouchListener(deleteView,
