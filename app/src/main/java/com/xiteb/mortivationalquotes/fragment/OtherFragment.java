@@ -50,7 +50,17 @@ public class OtherFragment extends Fragment {
 
         mService = Common.getadsService();
 
-        getOtherTitle();
+//        getOtherTitle();
+
+        String otherquotestitles[] = {"Alone", "Angry", "Anniversary", "Birthday", "Dating", "Friendship", "Good Morning", "Good Night", "Love"
+                , "Relationship"};
+
+        recuclerotherfragment = v.findViewById(R.id.recuclerotherfragment);
+        recuclerotherfragment.setHasFixedSize(true);
+        otherQuotesAdapter = new OtherQuotesAdapter(getContext(), otherquotestitles);
+        recuclerotherfragment.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        recuclerotherfragment.setAdapter(otherQuotesAdapter);
+
 
         // Inflate the layout for this fragment
         return v;
@@ -74,11 +84,11 @@ public class OtherFragment extends Fragment {
 
     private void otherquotestitle(List<User> otherquotetitle) {
 
-        recuclerotherfragment = v.findViewById(R.id.recuclerotherfragment);
-        recuclerotherfragment.setHasFixedSize(true);
-        otherQuotesAdapter = new OtherQuotesAdapter(getContext(), otherquotetitle);
-        recuclerotherfragment.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        recuclerotherfragment.setAdapter(otherQuotesAdapter);
+//        recuclerotherfragment = v.findViewById(R.id.recuclerotherfragment);
+//        recuclerotherfragment.setHasFixedSize(true);
+//        otherQuotesAdapter = new OtherQuotesAdapter(getContext(), otherquotetitle);
+//        recuclerotherfragment.setLayoutManager(new GridLayoutManager(getContext(), 2));
+//        recuclerotherfragment.setAdapter(otherQuotesAdapter);
 
 
     }

@@ -20,11 +20,18 @@ import java.util.List;
 public class OtherQuotesAdapter extends RecyclerView.Adapter<OtherQuotesAdapter.OtherQuoteViewHolder>{
 
     Context context;
-    List<User> otherquotetitle;
+//    List<User> otherquotetitle;
+    String[] otherquotestitles;
 
-    public OtherQuotesAdapter(Context context, List<User> otherquotetitle){
+
+//    public OtherQuotesAdapter(Context context, List<User> otherquotetitle){
+//        this.context = context;
+//        this.otherquotetitle = otherquotetitle;
+//    }
+
+    public OtherQuotesAdapter(Context context, String[] otherquotestitles) {
         this.context = context;
-        this.otherquotetitle = otherquotetitle;
+        this.otherquotestitles = otherquotestitles;
     }
 
 
@@ -41,13 +48,15 @@ public class OtherQuotesAdapter extends RecyclerView.Adapter<OtherQuotesAdapter.
     @Override
     public void onBindViewHolder(@NonNull OtherQuoteViewHolder otherQuoteViewHolder, final int i) {
 
-        otherQuoteViewHolder.tvotherquotetitle.setText(otherquotetitle.get(i).getUsername());
+//        otherQuoteViewHolder.tvotherquotetitle.setText(otherquotestitles.get(i).getUsername());
+        otherQuoteViewHolder.tvotherquotetitle.setText(otherquotestitles[i]);
 //        Log.i("1234","Get user name : "+otherquotetitle.get(i).getUsername());
 
         otherQuoteViewHolder.othertitlelayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, OtherViewActivity.class).putExtra("viewtitle",otherquotetitle.get(i).getUsername()));
+//                context.startActivity(new Intent(context, OtherViewActivity.class).putExtra("viewtitle",otherquotetitle.get(i).getUsername()));
+                context.startActivity(new Intent(context, OtherViewActivity.class).putExtra("viewtitle",otherquotestitles[i]));
             }
         });
 
@@ -57,7 +66,7 @@ public class OtherQuotesAdapter extends RecyclerView.Adapter<OtherQuotesAdapter.
 
     @Override
     public int getItemCount() {
-        return otherquotetitle.size();
+        return otherquotestitles.length;
     }
 
     class OtherQuoteViewHolder extends RecyclerView.ViewHolder {
