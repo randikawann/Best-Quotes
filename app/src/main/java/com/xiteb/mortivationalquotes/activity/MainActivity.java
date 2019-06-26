@@ -81,11 +81,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public ImageView photoEditImageView;
 
     Typeface newFont;
-    Typeface fontAlexBrush;
-    Typeface fontAmaticSC;
-    Typeface fontGeateVibes;
-    Typeface fontLato;
-    Typeface fontMontserrate;
+    Typeface font1,font2,font3,font4,font5,font6,font7,font8,font9,font10,font11,font12;
+
 
     String maintextletter;
     int maintextcolor;
@@ -108,19 +105,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().setTitle("Create Quotes");
         newFont = Typeface.createFromAsset(getAssets(), "Eventtus-Icons.ttf");
 
-        fontAlexBrush = Typeface.createFromAsset(getAssets(), "AlexBrush-Regular.ttf");
-        fontAmaticSC = Typeface.createFromAsset(getAssets(), "Amatic-Bold.ttf");
-        fontGeateVibes = Typeface.createFromAsset(getAssets(), "GreatVibes-Regular.otf");
-        fontLato = Typeface.createFromAsset(getAssets(), "Lato-Black.ttf");
-        fontMontserrate = Typeface.createFromAsset(getAssets(), "Montserrat-Bold.otf");
+        font1 = Typeface.createFromAsset(getAssets(), "AlexBrush-Regular.ttf");
+        font2 = Typeface.createFromAsset(getAssets(), "Amatic-Bold.ttf");
+        font3 = Typeface.createFromAsset(getAssets(), "emojione-android.ttf");
+        font4 = Typeface.createFromAsset(getAssets(), "Eventtus-Icons.ttf");
+        font5 = Typeface.createFromAsset(getAssets(), "GreatVibes-Regular.otf");
+        font6 = Typeface.createFromAsset(getAssets(), "Lato-Black.ttf");
+        font7 = Typeface.createFromAsset(getAssets(), "Montserrat-Bold.otf");
+        font8 = Typeface.createFromAsset(getAssets(), "OpenSans-Italic.ttf");
+        font9 = Typeface.createFromAsset(getAssets(), "Pacifico.ttf");
+        font10 = Typeface.createFromAsset(getAssets(), "Quicksand-Bold.otf");
+        font11 = Typeface.createFromAsset(getAssets(), "Raleway-Thin.ttf");
+        font12 = Typeface.createFromAsset(getAssets(), "Roboto-Light.ttf");
 
 
         fontfacepicker = new ArrayList<Typeface>();
         fontfacepicker.add(newFont);
-        fontfacepicker.add(fontAlexBrush);
-        fontfacepicker.add(fontGeateVibes);
-        fontfacepicker.add(fontLato);
-        fontfacepicker.add(fontMontserrate);
+        fontfacepicker.add(font1);
+        fontfacepicker.add(font2);
+        fontfacepicker.add(font3);
+        fontfacepicker.add(font4);
+        fontfacepicker.add(font5);
+        fontfacepicker.add(font6);
+        fontfacepicker.add(font7);
+        fontfacepicker.add(font8);
+        fontfacepicker.add(font9);
+        fontfacepicker.add(font10);
+        fontfacepicker.add(font11);
+        fontfacepicker.add(font12);
 
         // Default text styles;
         maintextletter = "Click Here";
@@ -283,7 +295,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void addText(String text, int colorCodeTextView, Typeface fontface) {
-        Log.i("1234", "Pop up text "+text+" "+colorCodeTextView+" "+fontface);
         photoEditorSDK.clearAllViews();
 //        photoEditorSDK.addText(text, colorCodeTextView, newFont);
 
@@ -389,6 +400,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (id == R.id.action_save) {
             Log.i("1234", "Save button clicked");
             returnBackWithSavedImage();
+            Toast.makeText(MainActivity.this, "Image saved!", Toast.LENGTH_SHORT).show();
             return true;
         }
         else if (id == R.id.action_share) {
@@ -421,7 +433,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        addText(maintextletter, maintextcolor, maintextface);
 
         updateView(View.VISIBLE);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         backgroundrecyclerview.setLayoutManager(layoutManager);
         backgroundrecyclerview.setHasFixedSize(true);
         FontFaceAdapter fontFaceAdapter = new FontFaceAdapter(this, fontfacepicker);
@@ -435,7 +447,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        photoEditImageView.setImageResource(R.drawable.a3);
 //        Log.i("1234", "1st resource : "+photoEditImageView.getResources().toString());
         updateView(View.GONE);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         backgroundrecyclerview.setLayoutManager(layoutManager);
         backgroundrecyclerview.setHasFixedSize(true);
         ImageGaleryAdapter imageGaleryAdapter = new ImageGaleryAdapter(this, galerypicker);
