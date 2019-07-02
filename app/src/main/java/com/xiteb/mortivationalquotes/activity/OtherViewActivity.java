@@ -34,9 +34,78 @@ public class OtherViewActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle(viewtitle);
 
-        mService = Common.getadsService();
+        int quoteimage[] = new int[0];
+        if(viewtitle.equals("Angry")){
+            quoteimage = new int[]{R.drawable.angry1, R.drawable.angry2, R.drawable.angry3, R.drawable.angry4, R.drawable.angry5,
+                    R.drawable.angry6, R.drawable.angry7, R.drawable.angry8, R.drawable.angry9, R.drawable.angry10};
+        }else if(viewtitle.equals("Anniversary")){
+            quoteimage = new int[]{R.drawable.annivessary1, R.drawable.annivessary2, R.drawable.anniversary3, R.drawable.annivessary4, R.drawable.annivessary5,
+                    R.drawable.annivessary6, R.drawable.annivessary7, R.drawable.annivessary8, R.drawable.annivessary9, R.drawable.annivessary10};
 
-        getmortivationQuotes();
+        }else if(viewtitle.equals("Birthday")){
+            quoteimage = new int[]{R.drawable.birthday1, R.drawable.birthday2, R.drawable.birthday3, R.drawable.birthday4, R.drawable.birthday5,
+                    R.drawable.birthday6, R.drawable.birthday7, R.drawable.birthday8, R.drawable.birthday9, R.drawable.birthday10};
+
+        }else if(viewtitle.equals("Dating")){
+            quoteimage = new int[]{R.drawable.birthday1};
+
+        }else if(viewtitle.equals("Friendship")){
+            quoteimage = new int[]{R.drawable.birthday1};
+
+        }else if(viewtitle.equals("Good Morning")){
+            quoteimage = new int[]{R.drawable.birthday1};
+
+        }else if(viewtitle.equals("Good Night")){
+            quoteimage = new int[]{R.drawable.birthday1};
+
+        }else if(viewtitle.equals("Love")){
+            quoteimage = new int[]{R.drawable.birthday1};
+
+        }else if(viewtitle.equals("Relationship")){
+            quoteimage = new int[]{R.drawable.birthday1};
+
+        }else{
+
+        }
+//        int quoteimage[] = {
+//                R.drawable.pic1,
+//                R.drawable.pic2,
+//                R.drawable.pic3,
+//                R.drawable.pic4,
+//                R.drawable.pic5,
+//                R.drawable.pic6,
+//                R.drawable.pic7,
+//                R.drawable.pic8,
+//                R.drawable.pic9,
+//                R.drawable.pic10,
+//                R.drawable.pic11,
+//                R.drawable.pic12,
+//                R.drawable.pic13,
+//                R.drawable.pic14,
+//                R.drawable.pic15,
+//                R.drawable.pic16,
+//                R.drawable.pic17,
+//                R.drawable.pic18,
+//                R.drawable.pic19,
+//                R.drawable.pic20,
+//                R.drawable.pic21,
+//                R.drawable.pic22,
+//                R.drawable.pic23
+//
+//        };
+
+        recuclerotheractivity = findViewById(R.id.recuclerotheractivity);
+        recuclerotheractivity.setHasFixedSize(true);
+        quotesAdapter = new QuotesAdapter(this, quoteimage);
+        recuclerotheractivity.setLayoutManager(new GridLayoutManager(this, 2));
+        recuclerotheractivity.setAdapter(quotesAdapter);
+
+
+//        mService = Common.getadsService();
+//
+//        getmortivationQuotes();
+
+
 
 
     }
@@ -59,11 +128,11 @@ public class OtherViewActivity extends AppCompatActivity {
 
     private void generateDataList(List<Quote> quotelist) {
 
-        recuclerotheractivity = findViewById(R.id.recuclerotheractivity);
-        recuclerotheractivity.setHasFixedSize(true);
-        quotesAdapter = new QuotesAdapter(this, quotelist);
-        recuclerotheractivity.setLayoutManager(new GridLayoutManager(this, 2));
-        recuclerotheractivity.setAdapter(quotesAdapter);
+//        recuclerotheractivity = findViewById(R.id.recuclerotheractivity);
+//        recuclerotheractivity.setHasFixedSize(true);
+//        quotesAdapter = new QuotesAdapter(this, quotelist, quoteimage);
+//        recuclerotheractivity.setLayoutManager(new GridLayoutManager(this, 2));
+//        recuclerotheractivity.setAdapter(quotesAdapter);
 
     }
 

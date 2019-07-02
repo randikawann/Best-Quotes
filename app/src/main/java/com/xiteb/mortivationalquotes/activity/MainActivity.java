@@ -63,6 +63,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnPhotoEditorSDKListener, RecyclerImageClick, FontFaceClick {
 
+    /**
+     * preview image size - 160dp*240dp, Inner image size 1000*1500
+     *
+     */
     private final String TAG = "PhotoEditorActivity";
     private RelativeLayout parentImageRelativeLayout;
     private RecyclerView drawingViewColorPickerRecyclerView;

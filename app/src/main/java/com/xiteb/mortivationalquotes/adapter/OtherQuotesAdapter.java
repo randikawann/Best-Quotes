@@ -22,6 +22,7 @@ public class OtherQuotesAdapter extends RecyclerView.Adapter<OtherQuotesAdapter.
     Context context;
 //    List<User> otherquotetitle;
     String[] otherquotestitles;
+    int[] otherquotesicon;
 
 
 //    public OtherQuotesAdapter(Context context, List<User> otherquotetitle){
@@ -29,9 +30,15 @@ public class OtherQuotesAdapter extends RecyclerView.Adapter<OtherQuotesAdapter.
 //        this.otherquotetitle = otherquotetitle;
 //    }
 
-    public OtherQuotesAdapter(Context context, String[] otherquotestitles) {
+//    public OtherQuotesAdapter(Context context, String[] otherquotestitles) {
+//        this.context = context;
+//        this.otherquotestitles = otherquotestitles;
+//    }
+
+    public OtherQuotesAdapter(Context context, String[] otherquotestitles, int[] otherquotesicon) {
         this.context = context;
         this.otherquotestitles = otherquotestitles;
+        this.otherquotesicon = otherquotesicon;
     }
 
 
@@ -50,6 +57,7 @@ public class OtherQuotesAdapter extends RecyclerView.Adapter<OtherQuotesAdapter.
 
 //        otherQuoteViewHolder.tvotherquotetitle.setText(otherquotestitles.get(i).getUsername());
         otherQuoteViewHolder.tvotherquotetitle.setText(otherquotestitles[i]);
+        otherQuoteViewHolder.imgotherquotetitle.setImageResource(otherquotesicon[i]);
 //        Log.i("1234","Get user name : "+otherquotetitle.get(i).getUsername());
 
         otherQuoteViewHolder.othertitlelayout.setOnClickListener(new View.OnClickListener() {

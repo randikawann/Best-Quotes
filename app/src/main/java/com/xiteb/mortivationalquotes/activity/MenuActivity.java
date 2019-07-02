@@ -25,9 +25,9 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
+        setContentView(R.layout.activity_menu);
         storageaccesspermission();
+
         //fragment layout
         ViewPager myviewPager = findViewById(R.id.main_view_pager);
         TapPageAdapter myTabPageAdapter = new TapPageAdapter(getSupportFragmentManager());
@@ -54,7 +54,7 @@ public class MenuActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= 23)
         {
             if (checkPermission()) {
-                setContentView(R.layout.activity_menu);
+
             } else {
                 requestPermission();
             }

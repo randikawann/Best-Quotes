@@ -52,12 +52,17 @@ public class OtherFragment extends Fragment {
 
 //        getOtherTitle();
 
-        String otherquotestitles[] = {"Alone", "Angry", "Anniversary", "Birthday", "Dating", "Friendship", "Good Morning", "Good Night", "Love"
+        String otherquotestitles[] = {"Angry", "Anniversary", "Birthday", "Dating", "Friendship", "Good Morning", "Good Night", "Love"
                 , "Relationship"};
+
+        int otherquotesicon[] = { R.drawable.other2, R.drawable.other3 , R.drawable.other4, R.drawable.other5, R.drawable.other6,
+                R.drawable.other7, R.drawable.other8, R.drawable.other9, R.drawable.other10};
+
+
 
         recuclerotherfragment = v.findViewById(R.id.recuclerotherfragment);
         recuclerotherfragment.setHasFixedSize(true);
-        otherQuotesAdapter = new OtherQuotesAdapter(getContext(), otherquotestitles);
+        otherQuotesAdapter = new OtherQuotesAdapter(getContext(), otherquotestitles, otherquotesicon);
         recuclerotherfragment.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recuclerotherfragment.setAdapter(otherQuotesAdapter);
 

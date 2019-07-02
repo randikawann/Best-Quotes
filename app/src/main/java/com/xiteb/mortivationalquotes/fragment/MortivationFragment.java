@@ -49,9 +49,10 @@ public class MortivationFragment extends Fragment {
 
         //this is for test pupors
         List<Quote> quotelist = null;
-        
-        generateDataList(quotelist);
+        int quoteimage[] = new int[0];
+//        generateDataList(quotelist);
 
+        generateDataList(quoteimage);
 
         return v;
     }
@@ -61,7 +62,7 @@ public class MortivationFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Quote>> call, Response<List<Quote>> response) {
 //                Log.i("1234","response "+response.body());
-                generateDataList(response.body());
+//                generateDataList(response.body());
             }
 
             @Override
@@ -72,7 +73,17 @@ public class MortivationFragment extends Fragment {
         });
     }
 
-    private void generateDataList(List<Quote> quotelist) {
+//    private void generateDataList(List<Quote> quotelist) {
+//
+//        recuclermortifragment = v.findViewById(R.id.recuclermortifragment);
+////        recuclermortifragment.setHasFixedSize(true);
+//        quotesAdapter = new QuotesAdapter(getContext(), quotelist);
+//        recuclermortifragment.setLayoutManager(new GridLayoutManager(getContext(), 2));
+//        recuclermortifragment.setAdapter(quotesAdapter);
+//
+//    }
+
+    private void generateDataList(int[] quotelist) {
 
         recuclermortifragment = v.findViewById(R.id.recuclermortifragment);
 //        recuclermortifragment.setHasFixedSize(true);
@@ -81,5 +92,4 @@ public class MortivationFragment extends Fragment {
         recuclermortifragment.setAdapter(quotesAdapter);
 
     }
-
 }
