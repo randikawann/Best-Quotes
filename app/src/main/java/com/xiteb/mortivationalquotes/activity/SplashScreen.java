@@ -1,18 +1,16 @@
-package com.xiteb.mortivationalquotes;
+package com.xiteb.mortivationalquotes.activity;
 
-import android.animation.AnimatorSet;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.xiteb.mortivationalquotes.activity.MenuActivity;
+import com.xiteb.mortivationalquotes.R;
 
 public class SplashScreen extends AppCompatActivity {
 

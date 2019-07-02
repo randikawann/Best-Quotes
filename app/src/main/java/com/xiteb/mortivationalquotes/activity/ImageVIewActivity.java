@@ -65,9 +65,9 @@ public class ImageVIewActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.action_copyitem:
-                        copytoclipboard();
-                        break;
+//                    case R.id.action_copyitem:
+//                        copytoclipboard();
+//                        break;
                     case R.id.action_downloaditem:
                         saveImage();
                         break;
@@ -126,7 +126,7 @@ public class ImageVIewActivity extends AppCompatActivity {
     }
 
     private void copytoclipboard() {
-        Toast.makeText(ImageVIewActivity.this, "Copy to clib board", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ImageVIewActivity.this, "Copy to clip board", Toast.LENGTH_SHORT).show();
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("copy value", titletext);
         clipboard.setPrimaryClip(clip);

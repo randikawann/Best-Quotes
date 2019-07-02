@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="#324755"
     android:layout_height="match_parent"
-    tools:context=".SplashScreen">
+    tools:context=".activity.SplashScreen">
 
 
     <LinearLayout

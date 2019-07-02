@@ -39,7 +39,7 @@ public class OtherViewActivity extends AppCompatActivity {
             quoteimage = new int[]{R.drawable.angry1, R.drawable.angry2, R.drawable.angry3, R.drawable.angry4, R.drawable.angry5,
                     R.drawable.angry6, R.drawable.angry7, R.drawable.angry8, R.drawable.angry9, R.drawable.angry10};
         }else if(viewtitle.equals("Anniversary")){
-            quoteimage = new int[]{R.drawable.annivessary1, R.drawable.annivessary2, R.drawable.anniversary3, R.drawable.annivessary4, R.drawable.annivessary5,
+            quoteimage = new int[]{R.drawable.annivessary1, R.drawable.annivessary2, R.drawable.annivessary3, R.drawable.annivessary4, R.drawable.annivessary5,
                     R.drawable.annivessary6, R.drawable.annivessary7, R.drawable.annivessary8, R.drawable.annivessary9, R.drawable.annivessary10};
 
         }else if(viewtitle.equals("Birthday")){
