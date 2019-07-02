@@ -35,7 +35,10 @@ public class OtherViewActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(viewtitle);
 
         int quoteimage[] = new int[0];
-        if(viewtitle.equals("Angry")){
+        if(viewtitle.equals("Along")){
+            quoteimage = new int[]{R.drawable.along1, R.drawable.along2, R.drawable.along3, R.drawable.along4, R.drawable.along5,
+                    R.drawable.along6, R.drawable.along7, R.drawable.along8, R.drawable.along9, R.drawable.along10};
+        }else if(viewtitle.equals("Angry")){
             quoteimage = new int[]{R.drawable.angry1, R.drawable.angry2, R.drawable.angry3, R.drawable.angry4, R.drawable.angry5,
                     R.drawable.angry6, R.drawable.angry7, R.drawable.angry8, R.drawable.angry9, R.drawable.angry10};
         }else if(viewtitle.equals("Anniversary")){
