@@ -50,22 +50,28 @@ public class OtherViewActivity extends AppCompatActivity {
                     R.drawable.birthday6, R.drawable.birthday7, R.drawable.birthday8, R.drawable.birthday9, R.drawable.birthday10};
 
         }else if(viewtitle.equals("Dating")){
-            quoteimage = new int[]{R.drawable.birthday1};
+            quoteimage = new int[]{R.drawable.dating1, R.drawable.dating2, R.drawable.dating3, R.drawable.dating4, R.drawable.dating5,
+                    R.drawable.dating6, R.drawable.dating7, R.drawable.dating8, R.drawable.dating9, R.drawable.dating10};
 
         }else if(viewtitle.equals("Friendship")){
-            quoteimage = new int[]{R.drawable.birthday1};
+            quoteimage = new int[]{R.drawable.friendship1, R.drawable.friendship2, R.drawable.friendship3, R.drawable.friendship4, R.drawable.friendship5,
+                    R.drawable.friendship6, R.drawable.friendship7, R.drawable.friendship8, R.drawable.friendship9, R.drawable.friendship10};
 
         }else if(viewtitle.equals("Good Morning")){
-            quoteimage = new int[]{R.drawable.birthday1};
+            quoteimage = new int[]{R.drawable.gm1, R.drawable.gm2, R.drawable.gm3, R.drawable.gm4, R.drawable.gm5,
+                    R.drawable.gm6, R.drawable.gm7, R.drawable.gm8, R.drawable.gm9, R.drawable.gm10};
 
         }else if(viewtitle.equals("Good Night")){
-            quoteimage = new int[]{R.drawable.birthday1};
+            quoteimage = new int[]{R.drawable.gn1, R.drawable.gn2, R.drawable.gn3, R.drawable.gn4, R.drawable.gn5,
+                    R.drawable.gn6, R.drawable.gn7, R.drawable.gn8, R.drawable.gn9, R.drawable.gn10};
 
         }else if(viewtitle.equals("Love")){
-            quoteimage = new int[]{R.drawable.birthday1};
+            quoteimage = new int[]{R.drawable.love1, R.drawable.love2, R.drawable.love3, R.drawable.love4, R.drawable.love5,
+                    R.drawable.love6, R.drawable.love7, R.drawable.love8, R.drawable.love9, R.drawable.love10};
 
         }else if(viewtitle.equals("Relationship")){
-            quoteimage = new int[]{R.drawable.birthday1};
+            quoteimage = new int[]{R.drawable.relationship1, R.drawable.relationship2, R.drawable.relationship3, R.drawable.relationship4, R.drawable.relationship5,
+                    R.drawable.relationship6, R.drawable.relationship7, R.drawable.relationship8, R.drawable.relationship9, R.drawable.relationship10};
 
         }else{
 
