@@ -19,7 +19,7 @@
         android:id="@+id/action_fontface"
         android:enabled="true"
         android:icon="@drawable/actionfontface"
-        android:title="Font face"
+        android:title="Fonts"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_background"

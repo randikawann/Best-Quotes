@@ -43,7 +43,7 @@ public class TapPageAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle (int position){
         switch (position){
             case 0:
-                return "Motivation";
+                return "Motivational";
             case 1:
                 return "Other";
             default:

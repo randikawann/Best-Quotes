@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        goToNextTextView.setOnClickListener(this);
 
         galerypicker = new ArrayList<>();
-        galerypicker.add(R.drawable.a1);
+        galerypicker.add(R.drawable.galeryimagecolorpickera);
         galerypicker.add(R.drawable.a2);
         galerypicker.add(R.drawable.a3);
         galerypicker.add(R.drawable.a4);
@@ -267,7 +267,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         fontfacechange();
                         break;
                     case R.id.action_background:
-                        drawingViewColorPickerRecyclerView.setVisibility(View.VISIBLE);
+//                        drawingViewColorPickerRecyclerView.setVisibility(View.VISIBLE);
                         backgroundrecyclerview.setVisibility(View.VISIBLE);
                         galleyimageselect();
                         updateBrushDrawingView(true);
@@ -514,7 +514,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        photoEditorSDK.setBrushDrawingMode(brushDrawingMode);
         if (brushDrawingMode) {
             updateView(View.GONE);
-            drawingViewColorPickerRecyclerView.setVisibility(View.VISIBLE);
+
+//            drawingViewColorPickerRecyclerView.setVisibility(View.VISIBLE);
+
+
 //            doneDrawingTextView.setVisibility(View.VISIBLE);
 //            eraseDrawingTextView.setVisibility(View.VISIBLE);
 //            LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, true);

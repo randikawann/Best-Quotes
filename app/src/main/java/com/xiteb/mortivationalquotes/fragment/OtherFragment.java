@@ -52,7 +52,7 @@ public class OtherFragment extends Fragment {
 
 //        getOtherTitle();
 
-        String otherquotestitles[] = {"Along","Angry", "Anniversary", "Birthday", "Dating", "Friendship", "Good Morning", "Good Night", "Love"
+        String otherquotestitles[] = {"Lonely","Angry", "Anniversary", "Birthday", "Dating", "Friendship", "Good Morning", "Good Night", "Love"
                 , "Relationship"};
 
         int otherquotesicon[] = { R.drawable.other1, R.drawable.other2, R.drawable.other3 , R.drawable.other4, R.drawable.other5, R.drawable.other6,
