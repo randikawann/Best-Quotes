@@ -1,4 +1,4 @@
-package com.xiteb.mortivationalquotes.widget;
+package com.rancreation.mortivationalquotes.widget;
 
 /**
  * Created by Ahmed Adel on 5/7/17.

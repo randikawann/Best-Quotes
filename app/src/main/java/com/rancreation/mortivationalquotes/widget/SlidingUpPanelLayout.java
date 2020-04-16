@@ -1,4 +1,4 @@
-package com.xiteb.mortivationalquotes.widget;
+package com.rancreation.mortivationalquotes.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

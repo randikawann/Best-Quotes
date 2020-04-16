@@ -15,7 +15,7 @@
  */
 
 
-package com.xiteb.mortivationalquotes.widget;
+package com.rancreation.mortivationalquotes.widget;
 
 import android.content.Context;
 import android.support.v4.view.MotionEventCompat;
