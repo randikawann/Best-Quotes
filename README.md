@@ -26,6 +26,12 @@ Users can download the quotes in the app and even share them with their beloved.
 
 <img src="branchscreenshot/4.png" height="300" />
 
+### Create Quote
+
+<p>added gif for view create quote function</p>
+<img src="branchscreenshot/gitvd.gif" height="300"/>
+
+
 ### Other Quotes
 
 <img src="branchscreenshot/14.png" height="300" />
@@ -38,9 +44,6 @@ Users can download the quotes in the app and even share them with their beloved.
 
 <img src="branchscreenshot/16.png" height="300" /> <img src="branchscreenshot/17.png" height="300" /> <img src="branchscreenshot/18.png" height="300" />
 
-### Create Quote
-
-<img src="branchscreenshot/5.png" height="300" /> <img src="branchscreenshot/6.png" height="300" /> <img src="branchscreenshot/7.png" height="300" /> <img src="branchscreenshot/8.png" height="300" /> <img src="branchscreenshot/9.png" height="300" /> <img src="branchscreenshot/10.png" height="300" /> <img src="branchscreenshot/11.png" height="300" /> <img src="branchscreenshot/12.png" height="300" /> <img src="branchscreenshot/13.png" height="300" /> 
 
 ### Photo editor SDK view
 
