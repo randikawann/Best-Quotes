@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.xiteb.mortivationalquotes">
+    package="com.rancreation.mortivationalquotes">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -13,29 +13,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.SplashScreen" android:screenOrientation="portrait">
+        <activity android:name="com.rancreation.mortivationalquotes.activity.SplashScreen" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GetStartActivity"></activity>
+        <activity android:name="com.rancreation.mortivationalquotes.GetStartActivity"></activity>
         <activity
-            android:name=".activity.OtherViewActivity"
-            android:parentActivityName=".activity.MenuActivity"
+            android:name="com.rancreation.mortivationalquotes.activity.OtherViewActivity"
+            android:parentActivityName="com.rancreation.mortivationalquotes.activity.MenuActivity"
             android:theme="@style/createquotestheme" />
         <activity
-            android:name=".activity.ImageVIewActivity"
-            android:parentActivityName=".activity.MenuActivity"
+            android:name="com.rancreation.mortivationalquotes.activity.ImageVIewActivity"
+            android:parentActivityName="com.rancreation.mortivationalquotes.activity.MenuActivity"
             android:theme="@style/createquotestheme" />
-        <activity android:name=".activity.MenuActivity">
+        <activity android:name="com.rancreation.mortivationalquotes.activity.MenuActivity">
 
 
         </activity>
         <activity
-            android:name=".activity.MainActivity"
-            android:parentActivityName=".activity.MenuActivity"
+            android:name="com.rancreation.mortivationalquotes.activity.MainActivity"
+            android:parentActivityName="com.rancreation.mortivationalquotes.activity.MenuActivity"
             android:theme="@style/createquotestheme" />
     </application>
 
