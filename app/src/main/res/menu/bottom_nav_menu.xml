@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_quotes"
+        android:enabled="true"
+        android:icon="@drawable/actionquotes"
+        android:title="Quotes"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_fontcolor"
+        android:enabled="true"
+        android:icon="@drawable/actionfontcolor"
+        android:title="Font Color"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_fontface"
+        android:enabled="true"
+        android:icon="@drawable/actionfontface"
+        android:title="Fonts"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_background"
+        android:enabled="true"
+        android:icon="@drawable/actionbackground"
+        android:title="Background"
+        app:showAsAction="always" />
+
+
+</menu>

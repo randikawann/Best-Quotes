@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MortivationalQuotes</string>
+    <string name="app_name">Motivational Quotes</string>
 
     <string name="done">Done</string>
     <string name="save">Save</string>
@@ -27,6 +27,8 @@
     <string name="undo">Undo</string>
     <string name="erase">Erase</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--<item-->
+        <!--android:id="@+id/action_copyitem"-->
+        <!--android:enabled="true"-->
+        <!--android:icon="@drawable/actioncopyyellow"-->
+        <!--android:title="Copy"-->
+        <!--app:showAsAction="ifRoom" />-->
+
+    <item
+        android:id="@+id/action_downloaditem"
+        android:enabled="true"
+        android:icon="@drawable/actiondowload"
+        android:title="Download"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_shareitem"
+        android:enabled="true"
+        android:icon="@drawable/actionshare"
+        android:title="Share"
+        app:showAsAction="ifRoom" />
+
+
+</menu>
