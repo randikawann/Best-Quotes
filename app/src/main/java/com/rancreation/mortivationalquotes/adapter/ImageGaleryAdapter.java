@@ -1,16 +1,14 @@
-package com.xiteb.mortivationalquotes.adapter;
+package com.rancreation.mortivationalquotes.adapter;
 
 import android.content.Context;
-import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.xiteb.mortivationalquotes.R;
+import com.rancreation.mortivationalquotes.R;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.xiteb.mortivationalquotes;
+package com.rancreation.mortivationalquotes;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.xiteb.mortivationalquotes.adapter;
+package com.rancreation.mortivationalquotes.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.xiteb.mortivationalquotes.R;
+import com.rancreation.mortivationalquotes.R;
 
 public class PopupAdapter extends ArrayAdapter<String> {
 

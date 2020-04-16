@@ -1,4 +1,4 @@
-package com.xiteb.mortivationalquotes.widget;
+package com.rancreation.mortivationalquotes.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -24,7 +24,7 @@ import android.view.accessibility.AccessibilityEvent;
 import android.widget.ListView;
 import android.widget.ScrollView;
 
-import com.xiteb.mortivationalquotes.R;
+import com.rancreation.mortivationalquotes.R;
 import com.nineoldandroids.view.animation.AnimatorProxy;
 
 

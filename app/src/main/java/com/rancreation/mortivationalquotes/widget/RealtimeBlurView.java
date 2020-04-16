@@ -1,4 +1,4 @@
-package com.xiteb.mortivationalquotes.widget;
+package com.rancreation.mortivationalquotes.widget;
 
 /**
  * Created by Ahmed Adel on 5/7/17.
@@ -22,7 +22,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
-import com.xiteb.mortivationalquotes.R;
+import com.rancreation.mortivationalquotes.R;
 
 /**
  * A realtime blurring overlay (like iOS UIVisualEffectView). Just put it above
