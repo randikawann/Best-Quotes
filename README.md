@@ -29,7 +29,7 @@ Users can download the quotes in the app and even share them with their beloved.
 ### Create Quote
 
 <p>added gif for view create quote function</p>
-<img src="branchscreenshot/gitvd.gif" height="300"/>
+<img src="branchscreenshot/gitvd.gif" height="600"/>
 
 
 ### Other Quotes
